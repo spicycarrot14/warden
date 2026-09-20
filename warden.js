@@ -743,13 +743,18 @@ let zoomTarget = null;
 function zoomToVehicle(id){
   const vd = VEH_DATA[id]; if(!vd) return;
   zoomTarget = id; selectedGlobeVehicle = id;
-  canvas.width  = W3(); canvas.height = H3();
-  canvas.style.display = 'block';
+  // Only show 2D canvas close-up when NOT in COA preview mode
+  // COA mode uses the globe directly for trajectory overlay
+  if(!activeCOAPreview) {
+    canvas.width  = W3(); canvas.height = H3();
+    canvas.style.display = 'block';
+  }
   if(window.getEarth && window.getEarth()) window.getEarth().pointOfView({ lat:vd.lat, lng:vd.lng, altitude:0.6 }, 900);
 }
 function exitCloseUp(){
   zoomTarget = null; activeCOAPreview = null;
   canvas.style.display = 'none';
+  if(window.updateGlobeLayers) window.updateGlobeLayers();
   if(window.getEarth && window.getEarth()) window.getEarth().pointOfView({ lat:20, lng:-30, altitude:2.5 }, 900);
 }
 function resetZoom(){ exitCloseUp(); }
@@ -763,7 +768,7 @@ window.addEventListener('resize', () => { if(window.resizeCloseUp) window.resize
 // ── CLOSE-UP ANIMATION LOOP ──
 (function closeUpLoop(){
   animFrame++;
-  if(zoomTarget && canvas.style.display !== 'none'){
+  if(zoomTarget && !activeCOAPreview && canvas.style.display !== 'none'){
     const cW = canvas.width, cH = canvas.height;
     if(cW > 10 && cH > 10) drawCloseUp(zoomTarget, cW, cH);
   }
