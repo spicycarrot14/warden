@@ -312,9 +312,9 @@ function toggleMath(id){
 // VEHICLE SELECTION
 // ═══════════════════════════════════
 const VEH_META = {
-  'ops7':    { title:'OPS-7',        sub:'LEO 518km · OPR' },
-  'ops4':    { title:'OPS-4',        sub:'LEO 503km · OPR' },
-  'ops9':    { title:'OPS-9',        sub:'LEO 534km · OPR' },
+  'ops7':    { title:'OPS-7',        sub:'LEO 518km · Remote Sensing · OPR' },
+  'ops4':    { title:'OPS-4',        sub:'LEO 503km · Data Collection · OPR' },
+  'ops9':    { title:'OPS-9',        sub:'LEO 534km · Earth Observation · OPR' },
   'solstice9':    { title:'Solstice-9',    sub:'LEO 520km · Inspector · STATE-A' },
   'equinox3':{ title:'Equinox-3',    sub:'LEO 541km · Inspector · STATE-B' },
 };
@@ -382,7 +382,7 @@ const VEH_TIMELINE = {
     { ts:'2026-03-19 · 03:07:18Z', type:'contact',  label:'Uplink · Site 1',     tx:'Routine telemetry and command pass', detail:'Duration 9m 22s · Ka-Band · All subsystems nominal' },
     { ts:'2026-03-19 · 01:15:44Z', type:'sensor',   label:'Sensor Retask',           tx:'Collection window opened over priority zone', detail:'Zone: Bravo · Window: 17m · Collection complete' },
     { ts:'2026-03-18 · 22:48:00Z', type:'contact',  label:'Uplink · Site 5', tx:'NAV ephemeris upload and downlink', detail:'Duration 7m 10s · Ka-Band · Nominal' },
-    { ts:'2026-03-18 · 20:30:00Z', type:'sensor',   label:'Imaging Retask',            tx:'Imaging tasked for thermal imaging pass', detail:'Region: North Africa · Window: 11m · Nominal' },
+    { ts:'2026-03-18 · 20:30:00Z', type:'sensor',   label:'Earth Observation Retask',            tx:'Earth Observation tasked for thermal imaging pass', detail:'Region: North Africa · Window: 11m · Nominal' },
     { ts:'2026-03-18 · 17:02:33Z', type:'maneuver', label:'Stationkeeping Burn',    tx:'Scheduled drag makeup burn executed', detail:'Δv +0.5 m/s · Fuel used: 0.2% · Fuel reserve 88%' },
     { ts:'2026-03-18 · 13:55:00Z', type:'contact',  label:'Uplink · Site 2',    tx:'Scheduled pass', detail:'Duration 8m 04s · S-Band · All nominal' },
     { ts:'2026-03-18 · 10:20:15Z', type:'sensor',   label:'EO Retask',              tx:'High-resolution EO collection over priority target', detail:'Window: 8m · Nominal · Data recorded 28% capacity' },
