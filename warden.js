@@ -44,7 +44,7 @@ function clickAlert(){
   activateAnomaly();
 }
 
-// Show monitor pill immediately — Cosmos-2558 is already being monitored
+// Show monitor pill immediately — Equinox-3 is already being monitored
 (function initPills(){
   const mp = document.getElementById('mon-pill');
   mp.style.display = 'flex';
@@ -77,7 +77,7 @@ function activateAnomaly(){
 
   // Update right panel header
   document.getElementById('right-title').textContent = 'ANOMALY RESPONSE';
-  document.getElementById('right-sub').textContent = '2026-03-19 · 03:41:22Z · NORAD-48821 → USA-342';
+  document.getElementById('right-sub').textContent = '2026-03-19 · 03:41:22Z · Solstice-9 → OPS-7';
   document.getElementById('right-badge').textContent = 'L2 — ANOMALY CONFIRMED';
   document.getElementById('right-badge').className = 'state-badge';
 
@@ -87,19 +87,19 @@ function activateAnomaly(){
 
   // Update vehicle tags to show anomaly
   // Update MIL-STD symbol stroke colors to orange at L2
-  document.querySelectorAll('#vdot-usa342 svg circle, #vdot-usa342 svg line').forEach(el=>el.setAttribute('stroke','#E04444'));
-  document.querySelectorAll('#vdot-usa342 svg circle').forEach(el=>el.setAttribute('fill','rgba(204,51,51,0.08)'));
-  document.getElementById('vname-usa342').style.color = '#E04444';
-  document.getElementById('vtag-usa342').innerHTML = '<span class="tag tag-risk">ASSET AT RISK</span>';
+  document.querySelectorAll('#vdot-ops7 svg circle, #vdot-ops7 svg line').forEach(el=>el.setAttribute('stroke','#E04444'));
+  document.querySelectorAll('#vdot-ops7 svg circle').forEach(el=>el.setAttribute('fill','rgba(204,51,51,0.08)'));
+  document.getElementById('vname-ops7').style.color = '#E04444';
+  document.getElementById('vtag-ops7').innerHTML = '<span class="tag tag-risk">VEHICLE AT RISK</span>';
   document.querySelectorAll('#vdot-48821 svg polygon, #vdot-48821 svg line').forEach(el=>el.setAttribute('stroke','#E04444'));
-  document.getElementById('vname-48821').style.color = '#E04444';
+  document.getElementById('vname-solstice9').style.color = '#E04444';
   document.getElementById('vtag-48821').innerHTML = '<span class="tag tag-thr">ANOMALY</span>';
-  document.getElementById('n48821-id').className = 'fv thr';
-  document.getElementById('n48821-dev').textContent = '9 / 10';
-  document.getElementById('n48821-dev').className = 'fv thr';
+  document.getElementById('solstice9-id').className = 'fv thr';
+  document.getElementById('solstice9-dev').textContent = '9 / 10';
+  document.getElementById('solstice9-dev').className = 'fv thr';
   // Reveal bidirectional cross-links
-  document.getElementById('link-usa342-anomaly').style.display = 'block';
-  document.getElementById('link-48821-asset').style.display  = 'block';
+  document.getElementById('link-ops7-anomaly').style.display = 'block';
+  document.getElementById('link-solstice9-vehicle').style.display  = 'block';
 
   // Auto-switch to deviation tab
   const tabEl = document.getElementById('tab-dev');
@@ -117,13 +117,13 @@ function activateAnomaly(){
   const tabCoa = document.getElementById('tab-coa');
   if(tabCoa) rightTab(tabCoa, 'coa');
 
-  // Select USA-342 as the asset we're protecting — highlight it
-  selectedVehicle = 'usa342';
-  selectVehicle('usa342');
+  // Select OPS-7 as the asset we're protecting — highlight it
+  selectedVehicle = 'ops7';
+  selectVehicle('ops7');
 
   // Enable globe trajectory filter
   document.getElementById('f-traj').checked = true;
-  selectedGlobeVehicle = 'usa342';
+  selectedGlobeVehicle = 'ops7';
 
   startTimers();
 }
@@ -183,27 +183,27 @@ function rightTab(btn, id){
 // QUEUE DATA + RENDER
 // ═══════════════════════════════════
 const VEH_QUEUE = {
-  'usa342': [
-    { offsetSec:1118,  type:'contact',  typeColor:'#7A8A9A', label:'Ground Contact · Schriever SFB',  detail:'Ka-Band · Est. duration 9m · Nominal pass',          tab:'contacts', accordionId:'gs-schriever' },
+  'ops7': [
+    { offsetSec:1118,  type:'contact',  typeColor:'#7A8A9A', label:'Ground Contact · Site 1',  detail:'Ka-Band · Est. duration 9m · Nominal pass',          tab:'contacts', accordionId:'gs-site1' },
     { offsetSec:3310,  type:'maneuver', typeColor:'#4A8FD4', label:'Stationkeeping Burn',              detail:'Δv +0.4 m/s · Scheduled drag makeup',                tab:null },
-    { offsetSec:5580,  type:'contact',  typeColor:'#7A8A9A', label:'Ground Contact · KSAT Svalbard',   detail:'Ka-Band · Est. duration 6m',                         tab:'contacts', accordionId:'gs-svalbard' },
+    { offsetSec:5580,  type:'contact',  typeColor:'#7A8A9A', label:'Ground Contact · Site 5',   detail:'Ka-Band · Est. duration 6m',                         tab:'contacts', accordionId:'gs-svalbard' },
     { offsetSec:8820,  type:'sensor',   typeColor:'#5A9A6A', label:'SAR Collection Window',            detail:'Maritime zone · Priority HIGH · 14m window',         tab:null },
   ],
-  'usa289': [
-    { offsetSec:2590,  type:'contact',  typeColor:'#7A8A9A', label:'Ground Contact · Vandenberg SFB',  detail:'S-Band · Est. duration 8m',                          tab:'contacts', accordionId:'gs-vandenberg' },
+  'ops4': [
+    { offsetSec:2590,  type:'contact',  typeColor:'#7A8A9A', label:'Ground Contact · Site 2 SFB',  detail:'S-Band · Est. duration 8m',                          tab:'contacts', accordionId:'gs-vandenberg' },
     { offsetSec:5100,  type:'sensor',   typeColor:'#5A9A6A', label:'SIGINT Collection Window',         detail:'Eastern Med · Wideband · 22m window',                tab:null },
-    { offsetSec:7440,  type:'contact',  typeColor:'#7A8A9A', label:'Ground Contact · KSAT Hawaii',     detail:'X-Band · Est. duration 7m',                          tab:'contacts', accordionId:'gs-hawaii' },
+    { offsetSec:7440,  type:'contact',  typeColor:'#7A8A9A', label:'Ground Contact · Site 8',     detail:'X-Band · Est. duration 7m',                          tab:'contacts', accordionId:'gs-hawaii' },
   ],
-  'usa301': [
+  'ops9': [
     { offsetSec:1980,  type:'sensor',   typeColor:'#5A9A6A', label:'EO/IR Collection Window',          detail:'Western Pacific · MWIR · Priority MED',              tab:null },
-    { offsetSec:3750,  type:'contact',  typeColor:'#7A8A9A', label:'Ground Contact · Schriever SFB',   detail:'Ka-Band · Est. duration 9m',                         tab:'contacts', accordionId:'gs-schriever' },
+    { offsetSec:3750,  type:'contact',  typeColor:'#7A8A9A', label:'Ground Contact · Site 1',   detail:'Ka-Band · Est. duration 9m',                         tab:'contacts', accordionId:'gs-site1' },
     { offsetSec:6300,  type:'maneuver', typeColor:'#4A8FD4', label:'Stationkeeping Burn',              detail:'Δv +0.5 m/s · Routine',                              tab:null },
   ],
-  'n48821': [
-    { offsetSec:720,   type:'anomaly',  typeColor:'#E04444', label:'Projected CPA',                    detail:'Closest Point of Approach with USA-342 · Pc 0.013',  tab:null },
+  'solstice9': [
+    { offsetSec:720,   type:'anomaly',  typeColor:'#E04444', label:'Projected CPA',                    detail:'Closest Point of Approach with OPS-7 · Pc 0.013',  tab:null },
     { offsetSec:4500,  type:'maneuver', typeColor:'#4A8FD4', label:'Predicted Burn Window',            detail:'Based on current trajectory — estimate only',         tab:null },
   ],
-  'cosmos2558': [
+  'equinox3': [
     { offsetSec:2880,  type:'sensor',   typeColor:'#5A9A6A', label:'Observation Pass',                 detail:'WARDEN photometric coverage',              tab:null },
     { offsetSec:6120,  type:'maneuver', typeColor:'#4A8FD4', label:'Predicted Burn Window',            detail:'DEV 5 — possible stationkeeping event',               tab:null },
   ],
@@ -312,20 +312,20 @@ function toggleMath(id){
 // VEHICLE SELECTION
 // ═══════════════════════════════════
 const VEH_META = {
-  'usa342':    { title:'USA-342',        sub:'LEO 518km · ISR · OPERATOR/NRO' },
-  'usa289':    { title:'USA-289',        sub:'LEO 503km · SIGINT · NSA/OPR' },
-  'usa301':    { title:'USA-301',        sub:'LEO 534km · EO/IR · NRO/OPR' },
-  'n48821':    { title:'NORAD-48821',    sub:'LEO 520km · Inspector · PRC/CNSA' },
-  'cosmos2558':{ title:'Cosmos-2558',    sub:'LEO 541km · Inspector · RU/VKS' },
+  'ops7':    { title:'OPS-7',        sub:'LEO 518km · ISR · OPR' },
+  'ops4':    { title:'OPS-4',        sub:'LEO 503km · SIGINT · OPR' },
+  'ops9':    { title:'OPS-9',        sub:'LEO 534km · EO/IR · OPR' },
+  'solstice9':    { title:'Solstice-9',    sub:'LEO 520km · Inspector · STATE-A' },
+  'equinox3':{ title:'Equinox-3',    sub:'LEO 541km · Inspector · STATE-B' },
 };
 
 // Per-vehicle stat bar data
 const VEH_STATS = {
-  'usa342':    { range:'47.0 km', closing:'+0.34 km/s', pc:'0.013',  dev:'9',  alerts:'1', rangeAlert:true, closingAlert:true, pcAlert:true, devAlert:true },
-  'usa289':    { range:'—',       closing:'—',           pc:'—',      dev:'2',  alerts:'0', rangeAlert:false,closingAlert:false,pcAlert:false,devAlert:false },
-  'usa301':    { range:'—',       closing:'—',           pc:'—',      dev:'1',  alerts:'0', rangeAlert:false,closingAlert:false,pcAlert:false,devAlert:false },
-  'n48821':    { range:'47.0 km', closing:'+0.34 km/s',  pc:'0.013',  dev:'9',  alerts:'1', rangeAlert:true, closingAlert:true, pcAlert:true, devAlert:true  },
-  'cosmos2558':{ range:'812 km',  closing:'+0.02 km/s',  pc:'0.0008', dev:'5',  alerts:'0', rangeAlert:false,closingAlert:false,pcAlert:false,devAlert:false },
+  'ops7':    { range:'47.0 km', closing:'+0.34 km/s', pc:'0.013',  dev:'9',  alerts:'1', rangeAlert:true, closingAlert:true, pcAlert:true, devAlert:true },
+  'ops4':    { range:'—',       closing:'—',           pc:'—',      dev:'2',  alerts:'0', rangeAlert:false,closingAlert:false,pcAlert:false,devAlert:false },
+  'ops9':    { range:'—',       closing:'—',           pc:'—',      dev:'1',  alerts:'0', rangeAlert:false,closingAlert:false,pcAlert:false,devAlert:false },
+  'solstice9':    { range:'47.0 km', closing:'+0.34 km/s',  pc:'0.013',  dev:'9',  alerts:'1', rangeAlert:true, closingAlert:true, pcAlert:true, devAlert:true  },
+  'equinox3':{ range:'812 km',  closing:'+0.02 km/s',  pc:'0.0008', dev:'5',  alerts:'0', rangeAlert:false,closingAlert:false,pcAlert:false,devAlert:false },
 };
 
 function updateStatBar(id){
@@ -355,55 +355,55 @@ function updateStatBar(id){
 const TL_COLOR = { maneuver:'#4A8FD4', contact:'#7A8A9A', sensor:'#5A9A6A', anomaly:'#E04444', coa:'#2ECC71' };
 
 const VEH_TIMELINE = {
-  'usa342': [
-    { ts:'2026-03-19 · 03:47:33Z', type:'anomaly',  label:'L2 Escalation',         tx:'OPR REYES escalated NORAD-48821 anomaly to L2', detail:'DEV 9 · Pc 0.013 · USA-342 designated Asset at Risk' },
-    { ts:'2026-03-19 · 03:44:01Z', type:'anomaly',  label:'L1 Alert Fired',         tx:'Automated L1 alert triggered on NORAD-48821', detail:'Unexpected burn sequence detected · WARDEN retasked' },
-    { ts:'2026-03-19 · 03:18:44Z', type:'contact',  label:'Uplink · Schriever',     tx:'Telemetry downlink and command uplink completed', detail:'Duration 8m 42s · Ka-Band · 2.4 Gbps · All subsystems nominal' },
+  'ops7': [
+    { ts:'2026-03-19 · 03:47:33Z', type:'anomaly',  label:'L2 Escalation',         tx:'OPERATOR 1 escalated Solstice-9 anomaly to L2', detail:'DEV 9 · Pc 0.013 · OPS-7 designated Vehicle at Risk' },
+    { ts:'2026-03-19 · 03:44:01Z', type:'anomaly',  label:'L1 Alert Fired',         tx:'Automated L1 alert triggered on Solstice-9', detail:'Unexpected burn sequence detected · WARDEN retasked' },
+    { ts:'2026-03-19 · 03:18:44Z', type:'contact',  label:'Uplink · Site 1',     tx:'Telemetry downlink and command uplink completed', detail:'Duration 8m 42s · Ka-Band · 2.4 Gbps · All subsystems nominal' },
     { ts:'2026-03-19 · 01:44:10Z', type:'sensor',   label:'Sensor Retask',          tx:'EO/IR tasked to cover new collection priority', detail:'Collection window 14m · Region: North Atlantic · Priority: HIGH' },
-    { ts:'2026-03-18 · 22:31:55Z', type:'contact',  label:'Uplink · KSAT Svalbard', tx:'Routine contact and ephemeris upload', detail:'Duration 6m 18s · Ka-Band · NAV update applied' },
+    { ts:'2026-03-18 · 22:31:55Z', type:'contact',  label:'Uplink · Site 5', tx:'Routine contact and ephemeris upload', detail:'Duration 6m 18s · Ka-Band · NAV update applied' },
     { ts:'2026-03-18 · 19:08:30Z', type:'maneuver', label:'Stationkeeping Burn',    tx:'Scheduled drag makeup maneuver executed', detail:'Δv +0.4 m/s · Fuel used: 0.3% · Post-burn orbit nominal' },
     { ts:'2026-03-18 · 14:52:14Z', type:'sensor',   label:'Sensor Retask',          tx:'SAR tasked to cover maritime collection zone', detail:'Collection window 9m · 2 of 8 array elements offline — partial coverage' },
-    { ts:'2026-03-18 · 11:20:00Z', type:'contact',  label:'Uplink · Schriever',     tx:'Scheduled contact · ephemeris + crypto uplink', detail:'Duration 9m 04s · KMI refresh applied' },
+    { ts:'2026-03-18 · 11:20:00Z', type:'contact',  label:'Uplink · Site 1',     tx:'Scheduled contact · ephemeris + crypto uplink', detail:'Duration 9m 04s · crypto key refresh applied' },
     { ts:'2026-03-17 · 23:44:38Z', type:'maneuver', label:'Collision Avoidance',    tx:'Minor avoidance maneuver — debris conjunction', detail:'Δv +1.2 m/s · Pc pre-maneuver: 1/4,200 · Post: nominal' },
-    { ts:'2026-03-17 · 08:15:00Z', type:'contact',  label:'Uplink · Vandenberg',    tx:'Routine telemetry pass', detail:'Duration 7m 30s · S-Band' },
+    { ts:'2026-03-17 · 08:15:00Z', type:'contact',  label:'Uplink · Site 2',    tx:'Routine telemetry pass', detail:'Duration 7m 30s · S-Band' },
   ],
-  'usa289': [
-    { ts:'2026-03-19 · 03:41:02Z', type:'contact',  label:'Uplink · Vandenberg',    tx:'Telemetry pass completed', detail:'Duration 7m 55s · S-Band · Narrowband dropout noted · 3 events / 6hr' },
+  'ops4': [
+    { ts:'2026-03-19 · 03:41:02Z', type:'contact',  label:'Uplink · Site 2',    tx:'Telemetry pass completed', detail:'Duration 7m 55s · S-Band · Narrowband dropout noted · 3 events / 6hr' },
     { ts:'2026-03-19 · 02:14:20Z', type:'sensor',   label:'SIGINT Retask',          tx:'Wideband collection shifted to new priority region', detail:'Region: Eastern Mediterranean · Window: 22m · Collection nominal' },
     { ts:'2026-03-19 · 00:55:10Z', type:'anomaly',  label:'Receiver Anomaly',       tx:'Narrowband receiver intermittent dropout detected', detail:'3 dropout events in 6hr window · Under monitoring · No action taken' },
-    { ts:'2026-03-18 · 21:30:44Z', type:'contact',  label:'Uplink · KSAT Troll',    tx:'Contact and NAV update', detail:'Duration 5m 12s · X-Band · Fuel reserve noted at 61% — below threshold' },
+    { ts:'2026-03-18 · 21:30:44Z', type:'contact',  label:'Uplink · Site 6',    tx:'Contact and NAV update', detail:'Duration 5m 12s · X-Band · Fuel reserve noted at 61% — below threshold' },
     { ts:'2026-03-18 · 18:08:00Z', type:'maneuver', label:'Stationkeeping Burn',    tx:'Scheduled orbit maintenance burn', detail:'Δv +0.3 m/s · Fuel used: 0.4% · Fuel reserve now 61%' },
     { ts:'2026-03-18 · 15:44:55Z', type:'sensor',   label:'SIGINT Retask',          tx:'Collection priority update — new tasking order received', detail:'Wideband array repositioned · Window 18m' },
-    { ts:'2026-03-18 · 12:00:30Z', type:'contact',  label:'Uplink · Vandenberg',    tx:'Scheduled pass · crypto expiry warning logged', detail:'Crypto/KMI expires in 3 days · Action required' },
-    { ts:'2026-03-17 · 20:33:15Z', type:'anomaly',  label:'Crypto Warning',         tx:'KMI key expiry flagged by ground system', detail:'Expiry: 2026-03-22 · Renewal pending scheduling' },
-    { ts:'2026-03-17 · 14:10:00Z', type:'contact',  label:'Uplink · KSAT Hawaii',   tx:'Contact and telemetry download', detail:'Duration 6m 40s · X-Band · All subsystems nominal except narrowband' },
+    { ts:'2026-03-18 · 12:00:30Z', type:'contact',  label:'Uplink · Site 2',    tx:'Scheduled pass · crypto expiry warning logged', detail:'Crypto/crypto key expires in 3 days · Action required' },
+    { ts:'2026-03-17 · 20:33:15Z', type:'anomaly',  label:'Crypto Warning',         tx:'crypto key key expiry flagged by ground system', detail:'Expiry: 2026-03-22 · Renewal pending scheduling' },
+    { ts:'2026-03-17 · 14:10:00Z', type:'contact',  label:'Uplink · Site 8',   tx:'Contact and telemetry download', detail:'Duration 6m 40s · X-Band · All subsystems nominal except narrowband' },
   ],
-  'usa301': [
-    { ts:'2026-03-19 · 03:07:18Z', type:'contact',  label:'Uplink · Schriever',     tx:'Routine telemetry and command pass', detail:'Duration 9m 22s · Ka-Band · All subsystems nominal' },
+  'ops9': [
+    { ts:'2026-03-19 · 03:07:18Z', type:'contact',  label:'Uplink · Site 1',     tx:'Routine telemetry and command pass', detail:'Duration 9m 22s · Ka-Band · All subsystems nominal' },
     { ts:'2026-03-19 · 01:15:44Z', type:'sensor',   label:'EO/IR Retask',           tx:'MWIR collection window opened over priority zone', detail:'Region: Western Pacific · Window: 17m · Collection complete' },
-    { ts:'2026-03-18 · 22:48:00Z', type:'contact',  label:'Uplink · KSAT Svalbard', tx:'NAV ephemeris upload and downlink', detail:'Duration 7m 10s · Ka-Band · Nominal' },
+    { ts:'2026-03-18 · 22:48:00Z', type:'contact',  label:'Uplink · Site 5', tx:'NAV ephemeris upload and downlink', detail:'Duration 7m 10s · Ka-Band · Nominal' },
     { ts:'2026-03-18 · 20:30:00Z', type:'sensor',   label:'LWIR Retask',            tx:'LWIR tasked for thermal imaging pass', detail:'Region: North Africa · Window: 11m · Nominal' },
     { ts:'2026-03-18 · 17:02:33Z', type:'maneuver', label:'Stationkeeping Burn',    tx:'Scheduled drag makeup burn executed', detail:'Δv +0.5 m/s · Fuel used: 0.2% · Fuel reserve 88%' },
-    { ts:'2026-03-18 · 13:55:00Z', type:'contact',  label:'Uplink · Vandenberg',    tx:'Scheduled pass', detail:'Duration 8m 04s · S-Band · All nominal' },
+    { ts:'2026-03-18 · 13:55:00Z', type:'contact',  label:'Uplink · Site 2',    tx:'Scheduled pass', detail:'Duration 8m 04s · S-Band · All nominal' },
     { ts:'2026-03-18 · 10:20:15Z', type:'sensor',   label:'EO Retask',              tx:'High-resolution EO collection over priority target', detail:'Window: 8m · Nominal · Data recorded 28% capacity' },
-    { ts:'2026-03-17 · 23:10:00Z', type:'contact',  label:'Uplink · KSAT Grimstad', tx:'Routine contact', detail:'Duration 5m 50s · Ka-Band · Nominal' },
+    { ts:'2026-03-17 · 23:10:00Z', type:'contact',  label:'Uplink · Site 7', tx:'Routine contact', detail:'Duration 5m 50s · Ka-Band · Nominal' },
     { ts:'2026-03-17 · 16:44:00Z', type:'maneuver', label:'Orbit Adjust',           tx:'Minor inclination correction burn', detail:'Δv +0.8 m/s · Ground commanded · Post-burn orbit nominal' },
   ],
-  'n48821': [
-    { ts:'2026-03-19 · 03:41:22Z', type:'anomaly',  label:'Deviation Detected',     tx:'Baseline deviation confirmed — burn sequence initiated', detail:'DEV 9 · Pc 0.013 · Closing on USA-342 at +0.34 km/s' },
+  'solstice9': [
+    { ts:'2026-03-19 · 03:41:22Z', type:'anomaly',  label:'Deviation Detected',     tx:'Baseline deviation confirmed — burn sequence initiated', detail:'DEV 9 · Pc 0.013 · Closing on OPS-7 at +0.34 km/s' },
     { ts:'2026-03-19 · 03:41:45Z', type:'sensor',   label:'Sensor Retask',          tx:'WARDEN retasked 3 sensors to track object', detail:'Coverage increased to continuous · All sensors nominal' },
-    { ts:'2026-03-19 · 03:44:01Z', type:'anomaly',  label:'L1 Alert',               tx:'L1 anomaly alert auto-generated', detail:'Velocity delta confirmed · Approach trajectory toward USA-342' },
+    { ts:'2026-03-19 · 03:44:01Z', type:'anomaly',  label:'L1 Alert',               tx:'L1 anomaly alert auto-generated', detail:'Velocity delta confirmed · Approach trajectory toward OPS-7' },
     { ts:'2026-03-18 · 18:30:00Z', type:'maneuver', label:'Maneuver Detected',      tx:'Minor Δv event observed — assessed as stationkeeping', detail:'Δv ~0.06 m/s · Baseline activity index unchanged at 0.12' },
     { ts:'2026-03-18 · 09:14:22Z', type:'sensor',   label:'Sensor Observation',     tx:'Scheduled photometric observation pass', detail:'Object class confirmed: Inspector · 92-day baseline established' },
-    { ts:'2026-03-17 · 22:00:00Z', type:'sensor',   label:'Initial Track',          tx:'Object added to WARDEN monitoring queue', detail:'NORAD ID 48821 · Origin: PRC/CNSA · Inspector class · DEV 2' },
+    { ts:'2026-03-17 · 22:00:00Z', type:'sensor',   label:'Initial Track',          tx:'Object added to WARDEN monitoring queue', detail:'Object ID 48821 · Origin: STATE-A · Inspector class · DEV 2' },
   ],
-  'cosmos2558': [
+  'equinox3': [
     { ts:'2026-03-19 · 02:44:10Z', type:'anomaly',  label:'DEV Elevated',           tx:'Deviation score elevated to 5 — increased monitoring', detail:'DEV 5 · Pc 0.0008 · Closing velocity nominal · No action taken' },
     { ts:'2026-03-19 · 00:10:55Z', type:'sensor',   label:'Sensor Retask',          tx:'Additional sensor coverage allocated by WARDEN', detail:'Coverage interval reduced to 20min · Baseline confirmed' },
     { ts:'2026-03-18 · 20:30:00Z', type:'maneuver', label:'Maneuver Detected',      tx:'Δv event detected — possible inspection approach', detail:'Δv ~0.14 m/s · DEV score updated 3 → 5 · Monitoring elevated' },
     { ts:'2026-03-18 · 14:05:00Z', type:'sensor',   label:'Sensor Observation',     tx:'Photometric pass · object confirmed active', detail:'Attitude control nominal · No payload emissions detected' },
     { ts:'2026-03-18 · 08:00:00Z', type:'sensor',   label:'Initial Track Update',   tx:'Routine observation — no activity', detail:'DEV 3 · Baseline: 0.09 · Stationkeeping only' },
-    { ts:'2026-03-17 · 16:22:00Z', type:'sensor',   label:'Initial Track',          tx:'Cosmos-2558 added to monitoring queue', detail:'VKS Inspector class · LEO 541km · DEV 3 at intake' },
+    { ts:'2026-03-17 · 16:22:00Z', type:'sensor',   label:'Initial Track',          tx:'Equinox-3 added to monitoring queue', detail:'STATE-B Inspector class · LEO 541km · DEV 3 at intake' },
   ],
 };
 
@@ -450,7 +450,7 @@ function selectVehicle(id){
 
   // Highlight selected row — clear all first, then mark active
   document.querySelectorAll('.sidebar.left .acc-row').forEach(r=>r.classList.remove('selected'));
-  const vehRows = { 'usa342':'vrow-usa342-header', 'n48821':'vrow-48821-header' };
+  const vehRows = { 'ops7':'vrow-ops7-header', 'solstice9':'vrow-solstice9-header' };
   // For rows with explicit ids use them; others find by onclick attribute
   document.querySelectorAll('.sidebar.left .acc-row').forEach(r=>{
     const oc = r.getAttribute('onclick')||'';
@@ -469,10 +469,10 @@ function selectVehicle(id){
   updateStatBar(id);
 
   // Show deviation content if relevant vehicle selected and anomaly is active
-  if(appState !== 'L0' && (id === 'usa342' || id === 'n48821')){
+  if(appState !== 'L0' && (id === 'ops7' || id === 'solstice9')){
     document.getElementById('dev-empty').style.display='none';
     document.getElementById('dev-content').style.display='block';
-  } else if(id !== 'usa342' && id !== 'n48821'){
+  } else if(id !== 'ops7' && id !== 'solstice9'){
     const de = document.getElementById('dev-empty');
     const dc = document.getElementById('dev-content');
     if(de) de.style.display='block';
@@ -543,11 +543,11 @@ function selectCOA(id){
   if(dtitle) dtitle.style.color       = accentColor;
   if(dcard)  dcard.style.borderLeft   = `3px solid ${accentColor}`;
   if(dtitle) dtitle.textContent        = n[id];
-  // Trigger COA globe trajectory overlay + close-up preview on USA-342
+  // Trigger COA globe trajectory overlay + close-up preview on OPS-7
   activeCOAPreview = id;
   if(window.updateGlobeLayers) window.updateGlobeLayers();
-  if(!zoomTarget) { if(window.zoomToVehicle) window.zoomToVehicle('usa342'); }
-  else { selectedGlobeVehicle = 'usa342'; zoomTarget = 'usa342'; }
+  if(!zoomTarget) { if(window.zoomToVehicle) window.zoomToVehicle('ops7'); }
+  else { selectedGlobeVehicle = 'ops7'; zoomTarget = 'ops7'; }
 }
 
 // ═══════════════════════════════════
@@ -570,7 +570,7 @@ function executeConfirm(){
   const n={a:'COA-A · Evasive Maneuver',b:'COA-B · Hold & Monitor',c:'COA-C · Emergency IMP Burn'};
 
   // Show confirmed badge
-  document.getElementById('confirmed-text').textContent = `${n[selectedCOA]} · ${ts} · OPR REYES`;
+  document.getElementById('confirmed-text').textContent = `${n[selectedCOA]} · ${ts} · OPERATOR 1`;
   document.getElementById('confirmed-badge').classList.add('vis');
 
   // Lock all cards
@@ -600,17 +600,17 @@ function executeConfirm(){
   ap.classList.add('none');
   document.getElementById('alert-text').textContent = '0 ACTIVE ANOMALYS';
   document.getElementById('mon-text').textContent = '3 MONITORED';
-  document.getElementById('vtag-usa342').innerHTML =
+  document.getElementById('vtag-ops7').innerHTML =
     '<span class="tag tag-mon">MONITOR</span><span class="tag tag-done" style="margin-left:4px">COA TRANSMITTED</span>';
   document.getElementById('vtag-48821').innerHTML =
     '<span class="tag tag-mon">MONITOR</span><span class="tag tag-done" style="margin-left:4px">COA TRANSMITTED</span>';
 
   // Reset symbol stroke colors back to blue
-  document.querySelectorAll('#vdot-usa342 svg circle, #vdot-usa342 svg line').forEach(el=>el.setAttribute('stroke','#00CCCC'));
-  document.querySelectorAll('#vdot-usa342 svg circle').forEach(el=>el.setAttribute('fill','rgba(0,204,204,0.08)'));
-  document.getElementById('vname-usa342').style.color      = '#DDEEFF';
+  document.querySelectorAll('#vdot-ops7 svg circle, #vdot-ops7 svg line').forEach(el=>el.setAttribute('stroke','#00CCCC'));
+  document.querySelectorAll('#vdot-ops7 svg circle').forEach(el=>el.setAttribute('fill','rgba(0,204,204,0.08)'));
+  document.getElementById('vname-ops7').style.color      = '#DDEEFF';
   document.querySelectorAll('#vdot-48821 svg polygon, #vdot-48821 svg line').forEach(el=>el.setAttribute('stroke','#E04444'));
-  document.getElementById('vname-48821').style.color       = '#DDEEFF';
+  document.getElementById('vname-solstice9').style.color       = '#DDEEFF';
 }
 
 function escalateChain(){
@@ -620,7 +620,7 @@ function escalateChain(){
 // ═══════════════════════════════════
 // CONTACT COUNTDOWNS
 // ═══════════════════════════════════
-const cts={'ct-usa342':{s:18*60+22},'ct-usa289':{s:43*60+10},'ct-usa301':{s:64*60+45}};
+const cts={'ct-ops7':{s:18*60+22},'ct-ops4':{s:43*60+10},'ct-ops9':{s:64*60+45}};
 function fmtC(s){const h=Math.floor(s/3600),m=Math.floor((s%3600)/60),sec=s%60;return'T-'+(h?String(h).padStart(2,'0')+':':'')+String(m).padStart(2,'0')+':'+String(sec).padStart(2,'0');}
 setInterval(()=>{for(const[id,c]of Object.entries(cts)){if(c.s>0){c.s--;const el=document.getElementById(id);if(el)el.textContent=fmtC(c.s);}}},1000);
 
@@ -641,11 +641,11 @@ const H3 = () => mount.clientHeight;
 
 // ── VEHICLE DEFINITIONS ──
 const VEH_DATA = {
-  'usa342': { label:'USA-342',      type:'a',       lat:31.6, lng:-61.2 },
-  'usa289': { label:'USA-289',      type:'ours',    lat:50,   lng:-30   },
-  'usa301': { label:'USA-301',      type:'ours',    lat:-15,  lng:75    },
-  'n48821': { label:'NORAD-48821',  type:'t',       lat:32,   lng:-62   },
-  'cosmos': { label:'Cosmos-2558',  type:'suspect', lat:38,   lng:120   },
+  'ops7': { label:'OPS-7',      type:'a',       lat:31.6, lng:-61.2 },
+  'ops4': { label:'OPS-4',      type:'ours',    lat:50,   lng:-30   },
+  'ops9': { label:'OPS-9',      type:'ours',    lat:-15,  lng:75    },
+  'solstice9': { label:'Solstice-9',  type:'t',       lat:32,   lng:-62   },
+  'cosmos': { label:'Equinox-3',  type:'suspect', lat:38,   lng:120   },
 };
 
 function typeColor(t){
@@ -695,15 +695,15 @@ const NOM_DOTS = [
 
 // Ground stations as points
 const GS_POINTS = [
-  { lat:38.8, lng:-104.5, label:'Schriever',     id:'sch', gs:true },
-  { lat:34.7, lng:-120.5, label:'Vandenberg',    id:'van', gs:true },
-  { lat:76.5, lng:-68.7,  label:'Thule',         id:'thu', gs:true },
-  { lat:7.3,  lng:-72.4,  label:'Diego Garcia',  id:'dgo', gs:true },
-  { lat:78.2, lng:15.6,   label:'KSAT Svalbard', id:'ksvl',gs:true },
-  { lat:-72.0,lng:2.5,    label:'KSAT Troll',    id:'ktrl',gs:true },
-  { lat:58.3, lng:8.6,    label:'KSAT Grimstad', id:'kgri',gs:true },
-  { lat:22.1, lng:-159.4, label:'KSAT Hawaii',   id:'khaw',gs:true },
-  { lat:1.3,  lng:103.8,  label:'KSAT Singapore',id:'ksin',gs:true },
+  { lat:38.8, lng:-104.5, label:'Site 1',     id:'sch', gs:true },
+  { lat:34.7, lng:-120.5, label:'Site 2',    id:'van', gs:true },
+  { lat:76.5, lng:-68.7,  label:'Site 3',         id:'thu', gs:true },
+  { lat:7.3,  lng:-72.4,  label:'Site 4',  id:'dgo', gs:true },
+  { lat:78.2, lng:15.6,   label:'Site 5', id:'ksvl',gs:true },
+  { lat:-72.0,lng:2.5,    label:'Site 6',    id:'ktrl',gs:true },
+  { lat:58.3, lng:8.6,    label:'Site 7', id:'kgri',gs:true },
+  { lat:22.1, lng:-159.4, label:'Site 8',   id:'khaw',gs:true },
+  { lat:1.3,  lng:103.8,  label:'Site 9',id:'ksin',gs:true },
 ].map(d => ({ ...d, color:'rgba(0,204,204,0.4)', radius:0.22 }));
 
 // ── TRAJECTORY PATHS ──
@@ -719,19 +719,19 @@ function lerpPts(sLat,sLng,eLat,eLng,steps,dLat=0,dLng=0,alt=0.12){
 
 function buildPaths(){
   return [
-    // USA-342 planned (dashed cyan)
+    // OPS-7 planned (dashed cyan)
     { id:'p342plan', pnts: lerpPts(28,-70,35,-52,60),
       color:'rgba(0,204,204,0.7)', dashLen:0.5, dashGap:0.5 },
-    // NORAD-48821 actual trajectory (solid red)
+    // Solstice-9 actual trajectory (solid red)
     { id:'pn48act',  pnts: lerpPts(29,-68,33,-55,60,-2.2,1.8),
       color:'rgba(204,51,51,0.8)',  dashLen:1,   dashGap:0   },
-    // USA-342 deviation (solid red, dimmer)
+    // OPS-7 deviation (solid red, dimmer)
     { id:'p342dev',  pnts: lerpPts(28,-70,33,-56,60,-2.8,1.6),
       color:'rgba(204,51,51,0.55)', dashLen:1,   dashGap:0   },
   ];
 }
 
-// Closing vector (NORAD → USA-342)
+// Closing vector (NORAD → OPS-7)
 const CLOSING_ARCS = [{
   startLat:32, startLng:-62, endLat:31.6, endLng:-61.2,
   color:'rgba(204,51,51,0.75)'
@@ -745,194 +745,20 @@ function zoomToVehicle(id){
   zoomTarget = id; selectedGlobeVehicle = id;
   canvas.width  = W3(); canvas.height = H3();
   canvas.style.display = 'block';
-  globe.pointOfView({ lat: vd.lat, lng: vd.lng, altitude: 0.5 }, 900);
+  if(window.getEarth && window.getEarth()) window.getEarth().pointOfView({ lat:vd.lat, lng:vd.lng, altitude:0.6 }, 900);
 }
 function exitCloseUp(){
   zoomTarget = null; activeCOAPreview = null;
   canvas.style.display = 'none';
-  globe.pointOfView({ lat:20, lng:-30, altitude: 2.5 }, 900);
+  if(window.getEarth && window.getEarth()) window.getEarth().pointOfView({ lat:20, lng:-30, altitude:2.5 }, 900);
 }
 function resetZoom(){ exitCloseUp(); }
 function resizeCloseUp(){
   if(zoomTarget){ canvas.width = W3(); canvas.height = H3(); }
 }
 
-// ── GLOBE.GL INIT (deferred until layout is painted) ──
-let globe;
-requestAnimationFrame(() => {
-requestAnimationFrame(() => { // double-rAF ensures CSS grid has reflowed
-
-// ── STARFIELD background ──
-const starCanvas = document.createElement('canvas');
-starCanvas.width = 2048; starCanvas.height = 1024;
-const starCtx = starCanvas.getContext('2d');
-starCtx.fillStyle = '#000005';
-starCtx.fillRect(0, 0, 2048, 1024);
-const rng = n => Math.floor(Math.random() * n);
-for(let i = 0; i < 4200; i++){
-  const x = rng(2048), y = rng(1024), r = Math.random();
-  const size   = r < 0.04 ? 1.6 : r < 0.18 ? 1.0 : 0.5;
-  const bright = 110 + rng(145);
-  const blue   = Math.min(255, bright + rng(40));
-  starCtx.fillStyle = `rgba(${bright},${bright},${blue},${0.45 + Math.random()*0.55})`;
-  starCtx.beginPath(); starCtx.arc(x, y, size, 0, Math.PI*2); starCtx.fill();
-}
-const starUrl = starCanvas.toDataURL('image/png');
-
-globe = Globe({ animateIn: false, waitForGlobeReady: false })(mount)
-  .width(mount.clientWidth  || window.innerWidth)
-  .height(mount.clientHeight || window.innerHeight)
-  .backgroundColor('#000005')
-  .backgroundImageUrl(starUrl)
-  .showGlobe(true)
-  .globeImageUrl(null)
-  .showAtmosphere(true)
-  .atmosphereColor('#1a5fa8')
-  .atmosphereAltitude(0.15)
-  .showGraticules(true)
-  // Continent polygons — loaded async
-  .polygonsData([])
-  .polygonGeoJsonGeometry('geometry')
-  .polygonCapColor(() => 'rgba(22, 52, 72, 0.97)')
-  .polygonSideColor(() => 'rgba(0,0,0,0)')
-  .polygonStrokeColor(() => '#2A7FAA')
-  .polygonAltitude(0.004)
-  .onGlobeReady(() => {
-    // Set globe surface to deep dark navy
-    const mat = globe.globeMaterial();
-    mat.color.set('#050D18');
-    mat.emissive && mat.emissive.set('#000000');
-
-    // Dim the graticule lines via Three.js scene traversal
-    globe.scene().traverse(obj => {
-      if(obj.type === 'LineSegments' && obj.material) {
-        obj.material.color && obj.material.color.set('#1A3A52');
-        obj.material.opacity = 0.3;
-        obj.material.transparent = true;
-      }
-    });
-
-    // Load land polygons via topojson
-    fetch('//cdn.jsdelivr.net/npm/world-atlas@2/land-110m.json')
-      .then(r => r.json())
-      .then(topo => {
-        const land = topojson.feature(topo, topo.objects.land);
-        globe
-          .polygonsData(land.features)
-          .polygonCapColor(() => 'rgba(22, 52, 72, 0.97)')
-          .polygonSideColor(() => 'rgba(0,0,0,0)')
-          .polygonStrokeColor(() => '#2A7FAA')
-          .polygonAltitude(0.004);
-      });
-  })
-  // Named vehicle HTML markers
-  .htmlElementsData(VEH_MARKERS)
-  .htmlElement(d => {
-    const el = document.createElement('div');
-    el.innerHTML = makeMilSymHTML(d.type, d.label);
-    el.style.cursor = 'pointer';
-    el.addEventListener('click', e => {
-      e.stopPropagation();
-      selectedGlobeVehicle = d.id;
-      zoomToVehicle(d.id);
-    });
-    return el;
-  })
-  .htmlAltitude(0.01)
-  // Nominal dots + ground stations
-  .pointsData([...NOM_DOTS, ...GS_POINTS])
-  .pointLat('lat').pointLng('lng')
-  .pointColor('color').pointRadius('radius')
-  .pointAltitude(0.0).pointsMerge(false)
-  // Trajectories (off at L0, on at L2)
-  .pathsData([])
-  .pathPoints('pnts')
-  .pathPointLat(p => p[0]).pathPointLng(p => p[1]).pathPointAlt(p => p[2])
-  .pathColor(d => d.color)
-  .pathDashLength(d => d.dashLen)
-  .pathDashGap(d => d.dashGap)
-  .pathDashAnimateTime(d => d.dashLen < 1 ? 3000 : 0)
-  // Closing arc
-  .arcsData([])
-  .arcStartLat('startLat').arcStartLng('startLng')
-  .arcEndLat('endLat').arcEndLng('endLng')
-  .arcColor('color')
-  .arcAltitude(0.04)
-  .arcDashLength(0.4).arcDashGap(0.6).arcDashAnimateTime(2500)
-  .onGlobeClick(() => { if(zoomTarget) exitCloseUp(); });
-
-// Initial POV
-globe.pointOfView({ lat:20, lng:-30, altitude:2.5 });
-
-// Auto-rotate + damping via OrbitControls
-globe.controls().autoRotate      = true;
-globe.controls().autoRotateSpeed = 0.4;
-globe.controls().enableDamping   = true;
-globe.controls().dampingFactor   = 0.08;
-
-// Click on 2D overlay exits close-up
-canvas.addEventListener('click', () => { if(zoomTarget) exitCloseUp(); });
-
-// ── FILTER + LAYER UPDATE ──
-function getFilters(){
-  return {
-    showOurs:   !!document.getElementById('f-ours')?.checked,
-    showGs:     !!document.getElementById('f-gs')?.checked,
-    showAnom: !!document.getElementById('f-anomaly')?.checked,
-    showMon:    !!document.getElementById('f-monitor')?.checked,
-    showNom:    !!document.getElementById('f-nom')?.checked,
-    showRisk:   !!document.getElementById('f-atrisk')?.checked,
-    showTraj:   !!document.getElementById('f-traj')?.checked,
-  };
-}
-
-function updateGlobeLayers(){
-  if(!globe) return;
-  const f = getFilters();
-  const l2Active = appState !== 'L0';
-
-  // HTML markers
-  const vis = VEH_MARKERS.filter(d => {
-    if((d.type==='ours')   && !f.showOurs)   return false;
-    if((d.type==='a')      && !f.showRisk)   return false;
-    if((d.type==='t')      && !f.showAnom) return false;
-    if((d.type==='suspect')&& !f.showMon)    return false;
-    return true;
-  });
-  globe.htmlElementsData(vis);
-
-  // Points: nom dots + gs
-  const pts = [];
-  if(f.showNom) pts.push(...NOM_DOTS);
-  if(f.showGs)  pts.push(...GS_POINTS);
-  globe.pointsData(pts);
-
-  // Trajectories
-  globe.pathsData(l2Active && f.showTraj ? buildPaths() : []);
-
-  // Closing arc
-  globe.arcsData(l2Active && f.showTraj && f.showAnom && f.showRisk ? CLOSING_ARCS : []);
-}
-window.updateGlobeLayers = updateGlobeLayers;
-
-// Wire filter checkboxes
-document.addEventListener('DOMContentLoaded', () => {
-  ['f-ours','f-gs','f-anomaly','f-monitor','f-nom','f-atrisk','f-traj'].forEach(id => {
-    document.getElementById(id)?.addEventListener('change', updateGlobeLayers);
-  });
-});
-
-// Re-measure after first paint so flex layout has settled, then sync layers
-requestAnimationFrame(() => {
-  globe.width(mount.clientWidth).height(mount.clientHeight);
-  updateGlobeLayers();
-});
-
 // ── RESIZE ──
-window.addEventListener('resize', () => {
-  globe.width(mount.clientWidth).height(mount.clientHeight);
-  resizeCloseUp();
-});
+window.addEventListener('resize', () => { if(window.resizeCloseUp) window.resizeCloseUp(); });
 
 // ── CLOSE-UP ANIMATION LOOP ──
 (function closeUpLoop(){
@@ -945,8 +771,6 @@ window.addEventListener('resize', () => {
 })();
 
 
-}); // end double-rAF
-}); // end outer rAF
 
 
 // ── CLOSE-UP VIEW ──
@@ -976,7 +800,7 @@ function drawCloseUp(id, W, H){
   ctx.textAlign='center';
   ctx.fillStyle='#7A8A9A'; ctx.font='14px Inter,sans-serif';
 
-  const typeLabel = {a:'ASSET AT RISK',ours:'OPERATOR VEHICLE',t:'ANOMALY',m:'MONITORED'}[vd.type]||'TRACKED';
+  const typeLabel = {a:'VEHICLE AT RISK',ours:'OPERATOR',t:'ANOMALY',m:'MONITORED'}[vd.type]||'TRACKED';
   const typeCol   = typeColor(vd.type);
   ctx.fillStyle=typeCol;
   ctx.fillText(typeLabel, cx, 56);
@@ -994,7 +818,7 @@ function drawCloseUp(id, W, H){
   ctx.beginPath();ctx.arc(cx,cy,18,0,Math.PI*2);ctx.strokeStyle=typeCol+'55';ctx.lineWidth=1;ctx.setLineDash([2,4]);ctx.stroke();ctx.setLineDash([]);
 
   // ── COA TRAJECTORY PREVIEW ── orbital-arc style matching drawCloseUp aesthetic
-  if(activeCOAPreview && id === 'usa342'){
+  if(activeCOAPreview && id === 'ops7'){
 
     // Shared arc geometry — same formula as the planned/deviation paths
     // Orbital arc: sweeps left→right across canvas, sinusoidal height = LEO curvature feel
@@ -1002,7 +826,7 @@ function drawCloseUp(id, W, H){
     const arcH = H * 0.30;   // arc height (how much it bows)
     const steps = 60;
 
-    // USA-342 sits at its "current" position — ~38% along a nominal arc
+    // OPS-7 sits at its "current" position — ~38% along a nominal arc
     // We'll anchor at a consistent canvas point and project arcs forward from there
     const nowT   = 0.38;  // "now" is 38% along the full planned arc
     const nowX   = (W - arcW) / 2 + arcW * nowT;
@@ -1012,7 +836,7 @@ function drawCloseUp(id, W, H){
     // using a different arc profile. We parameterise as:
     //   arcWMult  — how wide the forward arc is relative to arcW
     //   arcHMult  — how much extra lift/sink (positive = up = away from anomaly)
-    //   col       — path color (all USA-342 = friendly cyan, NORAD paths = hostile red)
+    //   col       — path color (all OPS-7 = friendly cyan, NORAD paths = hostile red)
     const USA_COL = '#00CCCC'; // friendly MIL-STD cyan — tied to vehicle, not COA
     const coaDefs = {
       a: { col:USA_COL, label:'COA-A · Evasive Maneuver',      risk:'LOW',  arcWMult:0.72, arcHMult: 1.55, noradMiss: true,  missBy:'~18 km' },
@@ -1020,7 +844,7 @@ function drawCloseUp(id, W, H){
       c: { col:USA_COL, label:'COA-C · Emergency IMP Burn',     risk:'HIGH', arcWMult:0.78, arcHMult:-1.20, noradMiss: true,  missBy:'~31 km' },
     };
 
-    // ── NORAD-48821 current approach arc (always) ──
+    // ── Solstice-9 current approach arc (always) ──
     // NORAD comes in from upper-right on a converging arc
     const nArcW   = W * 0.52;
     const nStartX = W - (W - arcW)/2 + nArcW * 0.12;
@@ -1052,11 +876,11 @@ function drawCloseUp(id, W, H){
     ctx.strokeStyle='#E04444'; ctx.lineWidth=1.5; ctx.fillStyle='rgba(204,51,51,0.12)';
     ctx.beginPath(); ctx.rect(-6,-6,12,12); ctx.fill(); ctx.stroke(); ctx.restore();
     ctx.fillStyle='#E04444'; ctx.font='bold 12px Inter,sans-serif';
-    ctx.fillText('NORAD-48821', nStartX - 38, nStartY - 12);
+    ctx.fillText('Solstice-9', nStartX - 38, nStartY - 12);
     ctx.fillStyle='rgba(204,51,51,0.6)'; ctx.font='12px Inter,sans-serif';
     ctx.fillText('+0.34 km/s closing', nStartX - 44, nStartY - 3);
 
-    // ── USA-342 planned baseline arc (always, dim) ──
+    // ── OPS-7 planned baseline arc (always, dim) ──
     ctx.globalAlpha = 0.25;
     ctx.beginPath();
     for(let i=0;i<=steps;i++){
@@ -1131,7 +955,7 @@ function drawCloseUp(id, W, H){
         ctx.fillStyle=d.noradMiss?'rgba(204,51,51,0.05)':'rgba(204,51,51,0.18)';
         ctx.beginPath(); ctx.rect(-5,-5,10,10); ctx.fill(); ctx.stroke(); ctx.restore();
         ctx.fillStyle=d.noradMiss?'rgba(204,51,51,0.6)':'#E04444'; ctx.font='12px Inter,sans-serif';
-        ctx.fillText('NORAD-48821 (predicted)', noradPredX+10, noradPredY-2);
+        ctx.fillText('Solstice-9 (predicted)', noradPredX+10, noradPredY-2);
         if(d.noradMiss){
           ctx.fillStyle='#2ECC71'; ctx.font='bold 12px Inter,sans-serif';
           ctx.fillText('✓ MISS · '+d.missBy, noradPredX+10, noradPredY+10);
@@ -1145,7 +969,7 @@ function drawCloseUp(id, W, H){
       ctx.globalAlpha=1;
     });
 
-    // ── USA-342 NOW marker ──
+    // ── OPS-7 NOW marker ──
     const nowPulse=0.5+0.5*Math.sin(animFrame*0.07);
     const ng=ctx.createRadialGradient(nowX,nowY,0,nowX,nowY,18+nowPulse*6);
     ng.addColorStop(0,'rgba(0,204,204,0.35)'); ng.addColorStop(1,'rgba(0,204,204,0)');
@@ -1155,7 +979,7 @@ function drawCloseUp(id, W, H){
     ctx.beginPath(); ctx.moveTo(nowX,nowY-7); ctx.lineTo(nowX,nowY+7); ctx.moveTo(nowX-7,nowY); ctx.lineTo(nowX+7,nowY);
     ctx.strokeStyle='#00CCCC'; ctx.lineWidth=1; ctx.stroke();
     ctx.fillStyle='rgba(180,220,220,0.85)'; ctx.font='bold 13px Inter,sans-serif';
-    ctx.fillText('USA-342 · NOW', nowX + 12, nowY - 6);
+    ctx.fillText('OPS-7 · NOW', nowX + 12, nowY - 6);
     ctx.fillStyle='rgba(0,204,204,0.5)'; ctx.font='12px Inter,sans-serif';
     ctx.fillText('LEO 518km', nowX + 12, nowY + 5);
 

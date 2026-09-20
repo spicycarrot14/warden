@@ -449,7 +449,7 @@ canvas#globe { display:block; width:100%; height:100%; }
       <span id="mon-text">2 MONITORED</span>
     </div>
     <div class="tb-sep"></div>
-    <span class="tb-op">OPERATOR 1 · 1 SCS/SCHRIEVER</span>
+    <span class="tb-op">OPERATOR 1</span>
     <div class="tb-sep"></div>
     <span class="tb-clock" id="nav-clock">--:--:--Z</span>
   </div>
@@ -482,11 +482,11 @@ canvas#globe { display:block; width:100%; height:100%; }
   <div class="panel-scroll" id="lt-vehicles">
     <div class="sec-label">Our Vehicles</div>
 
-    <!-- VEHICLE-342 -->
-    <div class="acc-group" id="vrow-usa342">
-      <div class="acc-row" id="vrow-usa342-header" onclick="selectVehicle('usa342')">
-        <div class="acc-chevron" onclick="event.stopPropagation();toggleAcc(document.getElementById('vrow-usa342-header'))"><svg width="6" height="10" viewBox="0 0 6 10"><path d="M1 1l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
-        <div class="milsym" id="vdot-usa342">
+    <!-- OPS-7 -->
+    <div class="acc-group" id="vrow-ops7">
+      <div class="acc-row" id="vrow-ops7-header" onclick="selectVehicle('ops7')">
+        <div class="acc-chevron" onclick="event.stopPropagation();toggleAcc(document.getElementById('vrow-ops7-header'))"><svg width="6" height="10" viewBox="0 0 6 10"><path d="M1 1l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
+        <div class="milsym" id="vdot-ops7">
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="9" cy="9" r="7.5" stroke="#00CCCC" stroke-width="1.5" fill="rgba(0,204,204,0.08)"/>
             <line x1="9" y1="4" x2="9" y2="14" stroke="#00CCCC" stroke-width="1.2"/>
@@ -494,24 +494,24 @@ canvas#globe { display:block; width:100%; height:100%; }
           </svg>
         </div>
         <div class="acc-main">
-          <div class="acc-name" id="vname-usa342">VEHICLE-342</div>
+          <div class="acc-name" id="vname-ops7">OPS-7</div>
           <div class="acc-sub">LEO 518km · ISR · Nominal</div>
         </div>
-        <div class="acc-right" id="vtag-usa342">
+        <div class="acc-right" id="vtag-ops7">
           <span class="tag tag-nom">NOMINAL</span>
         </div>
       </div>
-      <div class="acc-body" id="vbody-usa342">
+      <div class="acc-body" id="vbody-ops7">
         <div class="acc-fields">
-          <div><div class="fl">Designation</div><div class="fv hi">VEHICLE-342</div></div>
-          <div><div class="fl">Owner</div><div class="fv">OPR / NRO</div></div>
+          <div><div class="fl">Designation</div><div class="fv hi">OPS-7</div></div>
+          <div><div class="fl">Owner</div><div class="fv">OPR</div></div>
           <div><div class="fl">Orbit</div><div class="fv">LEO 518km</div></div>
           <div><div class="fl">Inclination</div><div class="fv">97.4°</div></div>
           <div><div class="fl">Mission</div><div class="fv">ISR</div></div>
           <div><div class="fl">Sensor Suite</div><div class="fv">EO/IR · SAR</div></div>
-          <div id="link-usa342-anomaly" style="display:none;grid-column:1/-1">
+          <div id="link-ops7-anomaly" style="display:none;grid-column:1/-1">
             <div class="fl" style="color:#E04444">Anomalous Vehicle</div>
-            <div class="fv" style="color:#E04444;cursor:pointer;text-decoration:underline;text-underline-offset:2px" onclick="jumpToVehicle('vrow-48821-header','vbody-48821')">VEHICLE-48821 →</div>
+            <div class="fv" style="color:#E04444;cursor:pointer;text-decoration:underline;text-underline-offset:2px" onclick="jumpToVehicle('vrow-solstice9-header','vbody-48821')">Solstice-9 →</div>
           </div>
         </div>
         <div class="acc-div"></div>
@@ -519,15 +519,15 @@ canvas#globe { display:block; width:100%; height:100%; }
         <div class="stat-mini" style="padding-top:0"><div class="sm-row"><span class="sm-lbl">Fuel Reserve</span><span class="sm-val" style="color:#DDEEFF">74%</span></div><div class="bar-t"><div class="bar-f" style="width:74%;background:#2A3A4A"></div></div></div>
         <div class="acc-div"></div>
         <div class="cc">
-          <div><div class="fl">Next Contact · Schriever</div><div class="fv">Ka-Band</div></div>
-          <div class="cc-countdown" id="ct-usa342">T-00:18:22</div>
+          <div><div class="fl">Next Contact · Site 1</div><div class="fv">Ka-Band</div></div>
+          <div class="cc-countdown" id="ct-ops7">T-00:18:22</div>
         </div>
       </div>
     </div>
 
-    <!-- VEHICLE-289 -->
+    <!-- OPS-4 -->
     <div class="acc-group">
-      <div class="acc-row" onclick="selectVehicle('usa289')">
+      <div class="acc-row" onclick="selectVehicle('ops4')">
         <div class="acc-chevron" onclick="event.stopPropagation();toggleAcc(this.parentElement)"><svg width="6" height="10" viewBox="0 0 6 10"><path d="M1 1l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
         <div class="milsym">
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -536,13 +536,13 @@ canvas#globe { display:block; width:100%; height:100%; }
             <line x1="4" y1="9" x2="14" y2="9" stroke="#00CCCC" stroke-width="1.2"/>
           </svg>
         </div>
-        <div class="acc-main"><div class="acc-name">VEHICLE-289</div><div class="acc-sub">LEO 503km · SIGINT · Nominal</div></div>
+        <div class="acc-main"><div class="acc-name">OPS-4</div><div class="acc-sub">LEO 503km · SIGINT · Nominal</div></div>
         <div class="acc-right"><span class="tag tag-nom">NOMINAL</span></div>
       </div>
       <div class="acc-body">
         <div class="acc-fields">
-          <div><div class="fl">Designation</div><div class="fv hi">VEHICLE-289</div></div>
-          <div><div class="fl">Owner</div><div class="fv">NSA / OPR</div></div>
+          <div><div class="fl">Designation</div><div class="fv hi">OPS-4</div></div>
+          <div><div class="fl">Owner</div><div class="fv">OPR</div></div>
           <div><div class="fl">Orbit</div><div class="fv">LEO 503km</div></div>
           <div><div class="fl">Sensor Suite</div><div class="fv">SIGINT Array</div></div>
         </div>
@@ -550,13 +550,13 @@ canvas#globe { display:block; width:100%; height:100%; }
         <div class="stat-mini"><div class="sm-row"><span class="sm-lbl">State of Health</span><span class="sm-val" style="color:#DDEEFF">94%</span></div><div class="bar-t"><div class="bar-f" style="width:94%;background:#2A4A3A"></div></div></div>
         <div class="stat-mini" style="padding-top:0"><div class="sm-row"><span class="sm-lbl">Fuel Reserve</span><span class="sm-val" style="color:#DDEEFF">61%</span></div><div class="bar-t"><div class="bar-f" style="width:61%;background:#2A3A4A"></div></div></div>
         <div class="acc-div"></div>
-        <div class="cc"><div><div class="fl">Next Contact · Vandenberg</div><div class="fv">S-Band</div></div><div class="cc-countdown" id="ct-usa289">T-00:43:10</div></div>
+        <div class="cc"><div><div class="fl">Next Contact · Site 2</div><div class="fv">S-Band</div></div><div class="cc-countdown" id="ct-ops4">T-00:43:10</div></div>
       </div>
     </div>
 
-    <!-- VEHICLE-301 -->
+    <!-- OPS-9 -->
     <div class="acc-group">
-      <div class="acc-row" onclick="selectVehicle('usa301')">
+      <div class="acc-row" onclick="selectVehicle('ops9')">
         <div class="acc-chevron" onclick="event.stopPropagation();toggleAcc(this.parentElement)"><svg width="6" height="10" viewBox="0 0 6 10"><path d="M1 1l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
         <div class="milsym">
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -565,13 +565,13 @@ canvas#globe { display:block; width:100%; height:100%; }
             <line x1="4" y1="9" x2="14" y2="9" stroke="#00CCCC" stroke-width="1.2"/>
           </svg>
         </div>
-        <div class="acc-main"><div class="acc-name">VEHICLE-301</div><div class="acc-sub">LEO 534km · EO/IR · Nominal</div></div>
+        <div class="acc-main"><div class="acc-name">OPS-9</div><div class="acc-sub">LEO 534km · EO/IR · Nominal</div></div>
         <div class="acc-right"><span class="tag tag-nom">NOMINAL</span></div>
       </div>
       <div class="acc-body">
         <div class="acc-fields">
-          <div><div class="fl">Designation</div><div class="fv hi">VEHICLE-301</div></div>
-          <div><div class="fl">Owner</div><div class="fv">NRO / OPR</div></div>
+          <div><div class="fl">Designation</div><div class="fv hi">OPS-9</div></div>
+          <div><div class="fl">Owner</div><div class="fv">OPR</div></div>
           <div><div class="fl">Orbit</div><div class="fv">LEO 534km</div></div>
           <div><div class="fl">Sensor Suite</div><div class="fv">EO · MWIR · LWIR</div></div>
         </div>
@@ -579,16 +579,16 @@ canvas#globe { display:block; width:100%; height:100%; }
         <div class="stat-mini"><div class="sm-row"><span class="sm-lbl">State of Health</span><span class="sm-val" style="color:#DDEEFF">99%</span></div><div class="bar-t"><div class="bar-f" style="width:99%;background:#2A4A3A"></div></div></div>
         <div class="stat-mini" style="padding-top:0"><div class="sm-row"><span class="sm-lbl">Fuel Reserve</span><span class="sm-val" style="color:#DDEEFF">88%</span></div><div class="bar-t"><div class="bar-f" style="width:88%;background:#2A3A4A"></div></div></div>
         <div class="acc-div"></div>
-        <div class="cc"><div><div class="fl">Next Contact · Schriever</div><div class="fv">Ka-Band</div></div><div class="cc-countdown" id="ct-usa301">T-01:04:45</div></div>
+        <div class="cc"><div><div class="fl">Next Contact · Site 1</div><div class="fv">Ka-Band</div></div><div class="cc-countdown" id="ct-ops9">T-01:04:45</div></div>
       </div>
     </div>
 
     <div class="sec-label" style="margin-top:4px">Foreign Vehicles</div>
 
-    <!-- VEHICLE-48821 -->
+    <!-- Solstice-9 -->
     <div class="acc-group">
-      <div class="acc-row" id="vrow-48821-header" onclick="selectVehicle('n48821')">
-        <div class="acc-chevron" onclick="event.stopPropagation();toggleAcc(document.getElementById('vrow-48821-header'))"><svg width="6" height="10" viewBox="0 0 6 10"><path d="M1 1l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
+      <div class="acc-row" id="vrow-solstice9-header" onclick="selectVehicle('solstice9')">
+        <div class="acc-chevron" onclick="event.stopPropagation();toggleAcc(document.getElementById('vrow-solstice9-header'))"><svg width="6" height="10" viewBox="0 0 6 10"><path d="M1 1l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
         <div class="milsym" id="vdot-48821">
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" id="milsvg-48821">
             <polygon points="9,1.5 16.5,9 9,16.5 1.5,9" stroke="#E04444" stroke-width="1.5" fill="rgba(204,51,51,0.08)"/>
@@ -597,30 +597,30 @@ canvas#globe { display:block; width:100%; height:100%; }
           </svg>
         </div>
         <div class="acc-main">
-          <div class="acc-name" id="vname-48821">VEHICLE-48821</div>
-          <div class="acc-sub">LEO 520km · Inspector · PRC/CNSA</div>
+          <div class="acc-name" id="vname-solstice9">Solstice-9</div>
+          <div class="acc-sub">LEO 520km · Inspector · STATE-A</div>
         </div>
         <div class="acc-right" id="vtag-48821"><span class="tag tag-nom">TRACKED</span></div>
       </div>
       <div class="acc-body" id="vbody-48821">
         <div class="acc-fields">
-          <div><div class="fl">VEHICLE ID</div><div class="fv" id="n48821-id">48821</div></div>
-          <div><div class="fl">Origin</div><div class="fv">PRC / CNSA</div></div>
+          <div><div class="fl">Object ID</div><div class="fv" id="solstice9-id">48821</div></div>
+          <div><div class="fl">Origin</div><div class="fv">STATE-A</div></div>
           <div><div class="fl">Orbit</div><div class="fv">LEO 520km</div></div>
           <div><div class="fl">Class</div><div class="fv">Inspector</div></div>
           <div><div class="fl">Prior Maneuvers</div><div class="fv">0</div></div>
-          <div><div class="fl">DEV Score</div><div class="fv" id="n48821-dev">2 / 10</div></div>
-          <div id="link-48821-vehicle" style="display:none;grid-column:1/-1">
+          <div><div class="fl">DEV Score</div><div class="fv" id="solstice9-dev">2 / 10</div></div>
+          <div id="link-solstice9-vehicle" style="display:none;grid-column:1/-1">
             <div class="fl" style="color:#DDEEFF">Vehicle at Risk</div>
-            <div class="fv" style="color:#DDEEFF;cursor:pointer;text-decoration:underline;text-underline-offset:2px" onclick="jumpToVehicle('vrow-usa342-header','vbody-usa342')">VEHICLE-342 →</div>
+            <div class="fv" style="color:#DDEEFF;cursor:pointer;text-decoration:underline;text-underline-offset:2px" onclick="jumpToVehicle('vrow-ops7-header','vbody-ops7')">OPS-7 →</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Cosmos-2558 -->
+    <!-- Equinox-3 -->
     <div class="acc-group">
-      <div class="acc-row" onclick="selectVehicle('cosmos2558')">
+      <div class="acc-row" onclick="selectVehicle('equinox3')">
         <div class="acc-chevron" onclick="event.stopPropagation();toggleAcc(this.parentElement)"><svg width="6" height="10" viewBox="0 0 6 10"><path d="M1 1l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
         <div class="milsym">
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -628,13 +628,13 @@ canvas#globe { display:block; width:100%; height:100%; }
             <text x="9" y="13" text-anchor="middle" font-size="8" font-weight="700" font-family="Inter,sans-serif" fill="#DDEEFF">?</text>
           </svg>
         </div>
-        <div class="acc-main"><div class="acc-name" style="color:#DDEEFF">Cosmos-2558</div><div class="acc-sub">LEO 541km · Inspector · RU/VKS</div></div>
+        <div class="acc-main"><div class="acc-name" style="color:#DDEEFF">Equinox-3</div><div class="acc-sub">LEO 541km · Inspector · STATE-B</div></div>
         <div class="acc-right"><span class="tag tag-mon">MONITOR</span></div>
       </div>
       <div class="acc-body">
         <div class="acc-fields">
-          <div><div class="fl">VEHICLE ID</div><div class="fv">53807</div></div>
-          <div><div class="fl">Origin</div><div class="fv">Russia / VKS</div></div>
+          <div><div class="fl">Object ID</div><div class="fv">53807</div></div>
+          <div><div class="fl">Origin</div><div class="fv">Russia / STATE-B</div></div>
           <div><div class="fl">Orbit</div><div class="fv">LEO 541km</div></div>
           <div><div class="fl">DEV Score</div><div class="fv" style="color:#4A8FD4">5 / 10</div></div>
         </div>
@@ -645,9 +645,9 @@ canvas#globe { display:block; width:100%; height:100%; }
   <!-- SOH -->
   <div class="panel-scroll" id="lt-soh" style="display:none">
 
-    <!-- VEHICLE-342 -->
+    <!-- OPS-7 -->
     <div class="sec-label" style="display:flex;justify-content:space-between;align-items:center;padding-right:16px">
-      <span>VEHICLE-342</span><span style="font-size:12px;color:#4A5A6A;letter-spacing:.5px">ISR · LEO 518km</span>
+      <span>OPS-7</span><span style="font-size:12px;color:#4A5A6A;letter-spacing:.5px">ISR · LEO 518km</span>
     </div>
     <div style="padding:0 16px 4px">
 
@@ -675,7 +675,7 @@ canvas#globe { display:block; width:100%; height:100%; }
         <div class="soh-row"><span class="soh-lbl">ADCS</span><span class="soh-val">Nominal</span></div>
         <div class="soh-row"><span class="soh-lbl">C2 Link</span><span class="soh-val">Nominal · –82 dBm</span></div>
         <div class="soh-row"><span class="soh-lbl">Data Recorder</span><span class="soh-val">62% capacity</span></div>
-        <div class="soh-row"><span class="soh-lbl">Crypto / KMI</span><span class="soh-val">Valid · expires 14d</span></div>
+        <div class="soh-row"><span class="soh-lbl">Crypto / crypto key</span><span class="soh-val">Valid · expires 14d</span></div>
         <div class="soh-row"><span class="soh-lbl">Last Uplink</span><span class="soh-val">03:18:44Z</span></div>
         <div class="soh-row"><span class="soh-lbl">Uptime</span><span class="soh-val">847 days</span></div>
       </div>
@@ -683,9 +683,9 @@ canvas#globe { display:block; width:100%; height:100%; }
 
     <div class="acc-div" style="margin:8px 0 4px"></div>
 
-    <!-- VEHICLE-289 -->
+    <!-- OPS-4 -->
     <div class="sec-label" style="display:flex;justify-content:space-between;align-items:center;padding-right:16px">
-      <span>VEHICLE-289</span><span style="font-size:12px;color:#4A5A6A;letter-spacing:.5px">SIGINT · LEO 503km</span>
+      <span>OPS-4</span><span style="font-size:12px;color:#4A5A6A;letter-spacing:.5px">SIGINT · LEO 503km</span>
     </div>
     <div style="padding:0 16px 4px">
 
@@ -713,7 +713,7 @@ canvas#globe { display:block; width:100%; height:100%; }
         <div class="soh-row"><span class="soh-lbl">ADCS</span><span class="soh-val">Nominal</span></div>
         <div class="soh-row"><span class="soh-lbl">C2 Link</span><span class="soh-val">Nominal · –79 dBm</span></div>
         <div class="soh-row"><span class="soh-lbl">Data Recorder</span><span class="soh-val">44% capacity</span></div>
-        <div class="soh-row"><span class="soh-lbl">Crypto / KMI</span><span class="soh-val soh-warn">Expires in 3 days</span></div>
+        <div class="soh-row"><span class="soh-lbl">Crypto / crypto key</span><span class="soh-val soh-warn">Expires in 3 days</span></div>
         <div class="soh-row"><span class="soh-lbl">Last Uplink</span><span class="soh-val">03:41:02Z</span></div>
         <div class="soh-row"><span class="soh-lbl">Uptime</span><span class="soh-val">1,204 days</span></div>
       </div>
@@ -721,9 +721,9 @@ canvas#globe { display:block; width:100%; height:100%; }
 
     <div class="acc-div" style="margin:8px 0 4px"></div>
 
-    <!-- VEHICLE-301 -->
+    <!-- OPS-9 -->
     <div class="sec-label" style="display:flex;justify-content:space-between;align-items:center;padding-right:16px">
-      <span>VEHICLE-301</span><span style="font-size:12px;color:#4A5A6A;letter-spacing:.5px">EO/IR · LEO 534km</span>
+      <span>OPS-9</span><span style="font-size:12px;color:#4A5A6A;letter-spacing:.5px">EO/IR · LEO 534km</span>
     </div>
     <div style="padding:0 16px 14px">
 
@@ -751,7 +751,7 @@ canvas#globe { display:block; width:100%; height:100%; }
         <div class="soh-row"><span class="soh-lbl">ADCS</span><span class="soh-val">Nominal</span></div>
         <div class="soh-row"><span class="soh-lbl">C2 Link</span><span class="soh-val">Nominal · –84 dBm</span></div>
         <div class="soh-row"><span class="soh-lbl">Data Recorder</span><span class="soh-val">28% capacity</span></div>
-        <div class="soh-row"><span class="soh-lbl">Crypto / KMI</span><span class="soh-val">Valid · expires 31d</span></div>
+        <div class="soh-row"><span class="soh-lbl">Crypto / crypto key</span><span class="soh-val">Valid · expires 31d</span></div>
         <div class="soh-row"><span class="soh-lbl">Last Uplink</span><span class="soh-val">03:07:18Z</span></div>
         <div class="soh-row"><span class="soh-lbl">Uptime</span><span class="soh-val">312 days</span></div>
       </div>
@@ -787,12 +787,12 @@ canvas#globe { display:block; width:100%; height:100%; }
   <div class="panel-scroll" id="lt-contacts" style="display:none">
 
     <div class="sec-label">AFSCN — Air Force Satellite Control Network</div>
-    <!-- Schriever -->
+    <!-- Site 1 -->
     <div class="acc-group">
-      <div class="acc-row" id="gs-schriever" onclick="toggleAcc(this)">
+      <div class="acc-row" id="gs-site1" onclick="toggleAcc(this)">
         <div class="acc-chevron"><svg width="6" height="10" viewBox="0 0 6 10"><path d="M1 1l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
         <div class="acc-dot" style="background:#4A8FD4"></div>
-        <div class="acc-main"><div class="acc-name">Schriever SFB</div><div class="acc-sub">Colorado Springs, CO · 50th Space Wing</div></div>
+        <div class="acc-main"><div class="acc-name">Ground Site 1</div><div class="acc-sub">Ground Operations</div></div>
         <div class="acc-right"><span class="tag tag-nom">ACTIVE</span></div>
       </div>
       <div class="acc-body">
@@ -806,16 +806,16 @@ canvas#globe { display:block; width:100%; height:100%; }
         </div>
         <div class="acc-div"></div>
         <div class="sec-label" style="padding-top:8px">Scheduled Contacts</div>
-        <div class="cc"><div><div class="fl">Vehicle</div><div class="fv hi">VEHICLE-342</div></div><div class="cc-countdown">T-00:18:22</div></div>
-        <div class="cc" style="margin-top:0"><div><div class="fl">Vehicle</div><div class="fv hi">VEHICLE-301</div></div><div class="cc-countdown">T-01:04:45</div></div>
+        <div class="cc"><div><div class="fl">Vehicle</div><div class="fv hi">OPS-7</div></div><div class="cc-countdown">T-00:18:22</div></div>
+        <div class="cc" style="margin-top:0"><div><div class="fl">Vehicle</div><div class="fv hi">OPS-9</div></div><div class="cc-countdown">T-01:04:45</div></div>
       </div>
     </div>
-    <!-- Vandenberg -->
+    <!-- Site 2 -->
     <div class="acc-group">
       <div class="acc-row" id="gs-vandenberg" onclick="toggleAcc(this)">
         <div class="acc-chevron"><svg width="6" height="10" viewBox="0 0 6 10"><path d="M1 1l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
         <div class="acc-dot" style="background:#4A8FD4"></div>
-        <div class="acc-main"><div class="acc-name">Vandenberg SFB</div><div class="acc-sub">Lompoc, CA · 30th Space Wing</div></div>
+        <div class="acc-main"><div class="acc-name">Site 2 SFB</div><div class="acc-sub">Lompoc, CA · 30th Space Wing</div></div>
         <div class="acc-right"><span class="tag tag-nom">ACTIVE</span></div>
       </div>
       <div class="acc-body">
@@ -829,15 +829,15 @@ canvas#globe { display:block; width:100%; height:100%; }
         </div>
         <div class="acc-div"></div>
         <div class="sec-label" style="padding-top:8px">Scheduled Contacts</div>
-        <div class="cc"><div><div class="fl">Vehicle</div><div class="fv hi">VEHICLE-289</div></div><div class="cc-countdown">T-00:43:10</div></div>
+        <div class="cc"><div><div class="fl">Vehicle</div><div class="fv hi">OPS-4</div></div><div class="cc-countdown">T-00:43:10</div></div>
       </div>
     </div>
-    <!-- Thule -->
+    <!-- Site 3 -->
     <div class="acc-group">
       <div class="acc-row" onclick="toggleAcc(this)">
         <div class="acc-chevron"><svg width="6" height="10" viewBox="0 0 6 10"><path d="M1 1l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
         <div class="acc-dot" style="background:#4A5A6A"></div>
-        <div class="acc-main"><div class="acc-name">Thule Air Base</div><div class="acc-sub">Pituffik, Greenland · POGO Node</div></div>
+        <div class="acc-main"><div class="acc-name">Site 3 Air Base</div><div class="acc-sub">Pituffik, Greenland · POGO Node</div></div>
         <div class="acc-right"><span class="tag tag-nom">STANDBY</span></div>
       </div>
       <div class="acc-body">
@@ -849,15 +849,15 @@ canvas#globe { display:block; width:100%; height:100%; }
         </div>
         <div class="acc-div"></div>
         <div class="sec-label" style="padding-top:8px">Scheduled Contacts</div>
-        <div class="cc"><div><div class="fl">Vehicle</div><div class="fv hi">VEHICLE-342</div></div><div class="cc-countdown">T-02:31:08</div></div>
+        <div class="cc"><div><div class="fl">Vehicle</div><div class="fv hi">OPS-7</div></div><div class="cc-countdown">T-02:31:08</div></div>
       </div>
     </div>
-    <!-- Diego Garcia -->
+    <!-- Site 4 -->
     <div class="acc-group">
       <div class="acc-row" onclick="toggleAcc(this)">
         <div class="acc-chevron"><svg width="6" height="10" viewBox="0 0 6 10"><path d="M1 1l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
         <div class="acc-dot" style="background:#4A5A6A"></div>
-        <div class="acc-main"><div class="acc-name">Diego Garcia</div><div class="acc-sub">British Indian Ocean Territory · POGO</div></div>
+        <div class="acc-main"><div class="acc-name">Site 4</div><div class="acc-sub">British Indian Ocean Territory · POGO</div></div>
         <div class="acc-right"><span class="tag tag-nom">STANDBY</span></div>
       </div>
       <div class="acc-body">
@@ -869,23 +869,23 @@ canvas#globe { display:block; width:100%; height:100%; }
         </div>
         <div class="acc-div"></div>
         <div class="sec-label" style="padding-top:8px">Scheduled Contacts</div>
-        <div class="cc"><div><div class="fl">Vehicle</div><div class="fv hi">VEHICLE-301</div></div><div class="cc-countdown">T-03:14:20</div></div>
+        <div class="cc"><div><div class="fl">Vehicle</div><div class="fv hi">OPS-9</div></div><div class="cc-countdown">T-03:14:20</div></div>
       </div>
     </div>
 
-    <div class="sec-label" style="margin-top:6px">KSAT — Kongsberg Satellite Services</div>
-    <!-- Svalbard -->
+    <div class="sec-label" style="margin-top:6px">Site — Kongsberg Satellite Services</div>
+    <!-- Site 5 -->
     <div class="acc-group">
       <div class="acc-row" id="gs-svalbard" onclick="toggleAcc(this)">
         <div class="acc-chevron"><svg width="6" height="10" viewBox="0 0 6 10"><path d="M1 1l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
         <div class="acc-dot" style="background:#4A8FD4"></div>
-        <div class="acc-main"><div class="acc-name">KSAT Svalbard</div><div class="acc-sub">Longyearbyen, Norway · 78°N</div></div>
+        <div class="acc-main"><div class="acc-name">Site 5</div><div class="acc-sub">Longyearbyen, Norway · 78°N</div></div>
         <div class="acc-right"><span class="tag tag-nom">ACTIVE</span></div>
       </div>
       <div class="acc-body">
         <div class="acc-fields">
           <div><div class="fl">Location</div><div class="fv">78.2°N 15.6°E</div></div>
-          <div><div class="fl">Network</div><div class="fv">KSAT</div></div>
+          <div><div class="fl">Network</div><div class="fv">Site</div></div>
           <div><div class="fl">Antennas</div><div class="fv">7 × Dish</div></div>
           <div><div class="fl">Bands</div><div class="fv">S / X / Ka / Ku</div></div>
           <div><div class="fl">Data Rate</div><div class="fv">3.2 Gbps</div></div>
@@ -893,23 +893,23 @@ canvas#globe { display:block; width:100%; height:100%; }
         </div>
         <div class="acc-div"></div>
         <div class="sec-label" style="padding-top:8px">Scheduled Contacts</div>
-        <div class="cc"><div><div class="fl">Vehicle</div><div class="fv hi">VEHICLE-342</div></div><div class="cc-countdown">T-00:52:14</div></div>
-        <div class="cc" style="margin-top:0"><div><div class="fl">Vehicle</div><div class="fv hi">VEHICLE-289</div></div><div class="cc-countdown">T-01:22:40</div></div>
-        <div class="cc" style="margin-top:0"><div><div class="fl">Vehicle</div><div class="fv hi">VEHICLE-301</div></div><div class="cc-countdown">T-01:38:00</div></div>
+        <div class="cc"><div><div class="fl">Vehicle</div><div class="fv hi">OPS-7</div></div><div class="cc-countdown">T-00:52:14</div></div>
+        <div class="cc" style="margin-top:0"><div><div class="fl">Vehicle</div><div class="fv hi">OPS-4</div></div><div class="cc-countdown">T-01:22:40</div></div>
+        <div class="cc" style="margin-top:0"><div><div class="fl">Vehicle</div><div class="fv hi">OPS-9</div></div><div class="cc-countdown">T-01:38:00</div></div>
       </div>
     </div>
-    <!-- Troll -->
+    <!-- Site 6 -->
     <div class="acc-group">
       <div class="acc-row" onclick="toggleAcc(this)">
         <div class="acc-chevron"><svg width="6" height="10" viewBox="0 0 6 10"><path d="M1 1l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
         <div class="acc-dot" style="background:#4A8FD4"></div>
-        <div class="acc-main"><div class="acc-name">KSAT Troll</div><div class="acc-sub">Queen Maud Land, Antarctica · 72°S</div></div>
+        <div class="acc-main"><div class="acc-name">Site 6</div><div class="acc-sub">Queen Maud Land, Antarctica · 72°S</div></div>
         <div class="acc-right"><span class="tag tag-nom">ACTIVE</span></div>
       </div>
       <div class="acc-body">
         <div class="acc-fields">
           <div><div class="fl">Location</div><div class="fv">72.0°S 2.5°E</div></div>
-          <div><div class="fl">Network</div><div class="fv">KSAT</div></div>
+          <div><div class="fl">Network</div><div class="fv">Site</div></div>
           <div><div class="fl">Antennas</div><div class="fv">4 × Dish</div></div>
           <div><div class="fl">Bands</div><div class="fv">S / X</div></div>
           <div><div class="fl">Data Rate</div><div class="fv">1.6 Gbps</div></div>
@@ -917,68 +917,68 @@ canvas#globe { display:block; width:100%; height:100%; }
         </div>
         <div class="acc-div"></div>
         <div class="sec-label" style="padding-top:8px">Scheduled Contacts</div>
-        <div class="cc"><div><div class="fl">Vehicle</div><div class="fv hi">VEHICLE-289</div></div><div class="cc-countdown">T-01:12:44</div></div>
-        <div class="cc" style="margin-top:0"><div><div class="fl">Vehicle</div><div class="fv hi">VEHICLE-342</div></div><div class="cc-countdown">T-02:08:30</div></div>
+        <div class="cc"><div><div class="fl">Vehicle</div><div class="fv hi">OPS-4</div></div><div class="cc-countdown">T-01:12:44</div></div>
+        <div class="cc" style="margin-top:0"><div><div class="fl">Vehicle</div><div class="fv hi">OPS-7</div></div><div class="cc-countdown">T-02:08:30</div></div>
       </div>
     </div>
-    <!-- Grimstad -->
+    <!-- Site 7 -->
     <div class="acc-group">
       <div class="acc-row" onclick="toggleAcc(this)">
         <div class="acc-chevron"><svg width="6" height="10" viewBox="0 0 6 10"><path d="M1 1l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
         <div class="acc-dot" style="background:#4A5A6A"></div>
-        <div class="acc-main"><div class="acc-name">KSAT Grimstad</div><div class="acc-sub">Norway · KSAT HQ</div></div>
+        <div class="acc-main"><div class="acc-name">Site 7</div><div class="acc-sub">Norway · Site HQ</div></div>
         <div class="acc-right"><span class="tag tag-nom">STANDBY</span></div>
       </div>
       <div class="acc-body">
         <div class="acc-fields">
           <div><div class="fl">Location</div><div class="fv">58.3°N 8.6°E</div></div>
-          <div><div class="fl">Network</div><div class="fv">KSAT</div></div>
+          <div><div class="fl">Network</div><div class="fv">Site</div></div>
           <div><div class="fl">Bands</div><div class="fv">S / X / Ka</div></div>
           <div><div class="fl">Data Rate</div><div class="fv">1.8 Gbps</div></div>
         </div>
         <div class="acc-div"></div>
         <div class="sec-label" style="padding-top:8px">Scheduled Contacts</div>
-        <div class="cc"><div><div class="fl">Vehicle</div><div class="fv hi">VEHICLE-301</div></div><div class="cc-countdown">T-02:48:30</div></div>
+        <div class="cc"><div><div class="fl">Vehicle</div><div class="fv hi">OPS-9</div></div><div class="cc-countdown">T-02:48:30</div></div>
       </div>
     </div>
-    <!-- Hawaii -->
+    <!-- Site 8 -->
     <div class="acc-group">
       <div class="acc-row" id="gs-hawaii" onclick="toggleAcc(this)">
         <div class="acc-chevron"><svg width="6" height="10" viewBox="0 0 6 10"><path d="M1 1l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
         <div class="acc-dot" style="background:#4A5A6A"></div>
-        <div class="acc-main"><div class="acc-name">KSAT Hawaii</div><div class="acc-sub">Kauai, HI · Mid-Pacific Node</div></div>
+        <div class="acc-main"><div class="acc-name">Site 8</div><div class="acc-sub">Kauai, HI · Mid-Pacific Node</div></div>
         <div class="acc-right"><span class="tag tag-nom">STANDBY</span></div>
       </div>
       <div class="acc-body">
         <div class="acc-fields">
           <div><div class="fl">Location</div><div class="fv">22.1°N 159.4°W</div></div>
-          <div><div class="fl">Network</div><div class="fv">KSAT</div></div>
+          <div><div class="fl">Network</div><div class="fv">Site</div></div>
           <div><div class="fl">Bands</div><div class="fv">S / X</div></div>
           <div><div class="fl">Data Rate</div><div class="fv">1.2 Gbps</div></div>
         </div>
         <div class="acc-div"></div>
         <div class="sec-label" style="padding-top:8px">Scheduled Contacts</div>
-        <div class="cc"><div><div class="fl">Vehicle</div><div class="fv hi">VEHICLE-289</div></div><div class="cc-countdown">T-02:34:55</div></div>
+        <div class="cc"><div><div class="fl">Vehicle</div><div class="fv hi">OPS-4</div></div><div class="cc-countdown">T-02:34:55</div></div>
       </div>
     </div>
-    <!-- Singapore -->
+    <!-- Site 9 -->
     <div class="acc-group">
       <div class="acc-row" onclick="toggleAcc(this)">
         <div class="acc-chevron"><svg width="6" height="10" viewBox="0 0 6 10"><path d="M1 1l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
         <div class="acc-dot" style="background:#4A5A6A"></div>
-        <div class="acc-main"><div class="acc-name">KSAT Singapore</div><div class="acc-sub">Singapore · Asia-Pacific Hub</div></div>
+        <div class="acc-main"><div class="acc-name">Site 9</div><div class="acc-sub">Site 9 · Asia-Pacific Hub</div></div>
         <div class="acc-right"><span class="tag tag-nom">STANDBY</span></div>
       </div>
       <div class="acc-body">
         <div class="acc-fields">
           <div><div class="fl">Location</div><div class="fv">1.3°N 103.8°E</div></div>
-          <div><div class="fl">Network</div><div class="fv">KSAT</div></div>
+          <div><div class="fl">Network</div><div class="fv">Site</div></div>
           <div><div class="fl">Bands</div><div class="fv">S / X / Ka</div></div>
           <div><div class="fl">Data Rate</div><div class="fv">2.0 Gbps</div></div>
         </div>
         <div class="acc-div"></div>
         <div class="sec-label" style="padding-top:8px">Scheduled Contacts</div>
-        <div class="cc"><div><div class="fl">Vehicle</div><div class="fv hi">VEHICLE-301</div></div><div class="cc-countdown">T-04:02:10</div></div>
+        <div class="cc"><div><div class="fl">Vehicle</div><div class="fv hi">OPS-9</div></div><div class="cc-countdown">T-04:02:10</div></div>
       </div>
     </div>
 
@@ -994,7 +994,7 @@ canvas#globe { display:block; width:100%; height:100%; }
 
       <!-- Affiliation context + relationship header -->
       <div style="padding:10px 16px 0;border-bottom:1px solid #1A2230;margin-bottom:0">
-        <!-- vehicle vehicle row (selected, on top) -->
+        <!-- Vehicle row (selected, on top) -->
         <div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid #0D1520">
           <svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
             <circle cx="9" cy="9" r="7.5" stroke="#00CCCC" stroke-width="1.5" fill="rgba(0,204,204,0.08)"/>
@@ -1002,8 +1002,8 @@ canvas#globe { display:block; width:100%; height:100%; }
             <line x1="4" y1="9" x2="14" y2="9" stroke="#00CCCC" stroke-width="1.2"/>
           </svg>
           <div style="flex:1">
-            <div style="font-size:12px;font-weight:700;color:#00CCCC">VEHICLE-342</div>
-            <div style="font-size:12px;color:#4A5A6A;letter-spacing:.4px">FRIENDLY · OPERATOR/NRO · ISR · LEO 518km</div>
+            <div style="font-size:12px;font-weight:700;color:#00CCCC">OPS-7</div>
+            <div style="font-size:12px;color:#4A5A6A;letter-spacing:.4px">FRIENDLY · OPR · ISR · LEO 518km</div>
           </div>
           <span style="font-size:12px;font-weight:700;color:#DDEEFF;letter-spacing:.5px;background:rgba(221,238,255,0.06);padding:2px 6px;border:1px solid rgba(221,238,255,0.15);border-radius:2px">SELECTED</span>
         </div>
@@ -1017,8 +1017,8 @@ canvas#globe { display:block; width:100%; height:100%; }
             <line x1="5" y1="9" x2="13" y2="9" stroke="#E04444" stroke-width="1.2"/>
           </svg>
           <div style="flex:1">
-            <div style="font-size:12px;font-weight:700;color:#E04444">VEHICLE-48821</div>
-            <div style="font-size:12px;color:#4A5A6A;letter-spacing:.4px">HOSTILE · PRC/CNSA · Inspector · LEO 520km</div>
+            <div style="font-size:12px;font-weight:700;color:#E04444">Solstice-9</div>
+            <div style="font-size:12px;color:#4A5A6A;letter-spacing:.4px">HOSTILE · STATE-A · Inspector · LEO 520km</div>
           </div>
           <span style="font-size:12px;font-weight:700;color:#E04444;letter-spacing:.5px;background:rgba(204,51,51,0.1);padding:2px 6px;border:1px solid rgba(204,51,51,0.25);border-radius:2px">ANOMALY · DEV 9</span>
         </div>
@@ -1073,7 +1073,7 @@ canvas#globe { display:block; width:100%; height:100%; }
       </div>
       <div class="sec-label">Object Metadata</div>
       <div class="field-grid">
-        <div><div class="fl">Origin</div><div class="fv thr">PRC / CNSA</div></div>
+        <div><div class="fl">Origin</div><div class="fv thr">STATE-A</div></div>
         <div><div class="fl">Class</div><div class="fv">Inspector</div></div>
         <div><div class="fl">Observation</div><div class="fv">92 days</div></div>
         <div><div class="fl">Prior Maneuvers</div><div class="fv">0</div></div>
@@ -1119,7 +1119,7 @@ canvas#globe { display:block; width:100%; height:100%; }
       <div id="sat-suggestions" style="display:none;position:absolute;top:100%;left:0;right:0;background:#080B0F;border:1px solid #1A2230;border-radius:0 0 2px 2px;z-index:20;max-height:140px;overflow-y:auto;"></div>
     </div>
     <div class="filter-group">
-      <div class="filter-group-lbl">Our vehicles</div>
+      <div class="filter-group-lbl">Our Vehicles</div>
       <label class="filter-item"><input type="checkbox" class="f-cb" id="f-ours" checked onchange="updateGlobeLayers()"><div class="f-dot" style="background:#4A8FD4"></div><span class="f-lbl">Operator Vehicles</span></label>
       <label class="filter-item"><input type="checkbox" class="f-cb" id="f-gs" checked onchange="updateGlobeLayers()"><div class="f-dot" style="background:#2A5A8A"></div><span class="f-lbl">Ground Stations</span></label>
     </div>
@@ -1128,7 +1128,7 @@ canvas#globe { display:block; width:100%; height:100%; }
       <label class="filter-item"><input type="checkbox" class="f-cb" id="f-anomaly" checked onchange="updateGlobeLayers()"><div class="f-dot" style="background:#E04444"></div><span class="f-lbl">Anomaly</span></label>
       <label class="filter-item"><input type="checkbox" class="f-cb" id="f-monitor" checked onchange="updateGlobeLayers()"><div class="f-dot" style="background:#4A8FD4"></div><span class="f-lbl">Monitor</span></label>
       <label class="filter-item"><input type="checkbox" class="f-cb" id="f-nom" checked onchange="updateGlobeLayers()"><div class="f-dot" style="background:#3A4A5A"></div><span class="f-lbl">Nominal</span></label>
-      <label class="filter-item"><input type="checkbox" class="f-cb" id="f-atrisk" checked onchange="updateGlobeLayers()"><div class="f-dot" style="background:#DDEEFF"></div><span class="f-lbl">vehicle at Risk</span></label>
+      <label class="filter-item"><input type="checkbox" class="f-cb" id="f-atrisk" checked onchange="updateGlobeLayers()"><div class="f-dot" style="background:#DDEEFF"></div><span class="f-lbl">Vehicle at Risk</span></label>
     </div>
     <div class="filter-group" style="margin-bottom:0">
       <div class="filter-group-lbl">Overlay</div>
@@ -1238,7 +1238,7 @@ canvas#globe { display:block; width:100%; height:100%; }
         <button class="eb-btn" onclick="escalateChain()">Escalate to Chain of Command →</button>
       </div>
 
-      <!-- vehicle being protected -->
+      <!-- Asset being protected -->
       <div style="margin:0 0 10px 0;padding:8px 10px;background:#040810;border:1px solid #1A2230;border-left:2px solid #00CCCC;display:flex;align-items:center;gap:8px;overflow:hidden">
         <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
           <circle cx="9" cy="9" r="7.5" stroke="#00CCCC" stroke-width="1.5" fill="rgba(0,204,204,0.08)"/>
@@ -1247,7 +1247,7 @@ canvas#globe { display:block; width:100%; height:100%; }
         </svg>
         <div style="flex:1;min-width:0;overflow:hidden">
           <div style="font-size:12px;color:#7A8A9A;letter-spacing:.8px;text-transform:uppercase;font-weight:600;margin-bottom:1px">Protecting</div>
-          <div style="font-size:12px;font-weight:700;color:#00CCCC;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">VEHICLE-342 · OPERATOR/NRO · ISR · LEO 518km</div>
+          <div style="font-size:12px;font-weight:700;color:#00CCCC;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">OPS-7 · OPR · ISR · LEO 518km</div>
         </div>
         <span style="flex-shrink:0;font-size:12px;font-weight:700;color:#00CCCC;border:1px solid rgba(0,204,204,0.3);padding:2px 6px;border-radius:2px;white-space:nowrap">SELECTED</span>
       </div>
@@ -1270,7 +1270,7 @@ canvas#globe { display:block; width:100%; height:100%; }
             <div><div class="cf-l">Maneuver Type</div><div class="cf-v">Plane change</div></div>
             <div class="cf-r"><div class="cf-l">Burn Duration</div><div class="cf-v">93 mins</div></div>
           </div>
-          <div class="intel-r"><div class="intel-l">Attribution / Intel</div><div class="intel-v">VEHICLE-48821 consistent with PRC inspection profile. Behavior assessed as deliberate — low probability of malfunction.</div></div>
+          <div class="intel-r"><div class="intel-l">Attribution / Intel</div><div class="intel-v">Solstice-9 consistent with STATE-A inspection profile. Behavior assessed as deliberate — low probability of malfunction.</div></div>
           <div class="conf-row"><span class="conf-l">Confidence</span><div class="conf-t"><div class="conf-f" style="width:84%;background:#2A3A4A"></div></div><span class="conf-v" style="color:#8A9AAA">84%</span></div>
         </div>
       </div>
@@ -1308,7 +1308,7 @@ canvas#globe { display:block; width:100%; height:100%; }
             <div><div class="cf-l">Maneuver Type</div><div class="cf-v">Manual Burn</div></div>
             <div class="cf-r"><div class="cf-l">Burn Duration</div><div class="cf-v">31 mins</div></div>
           </div>
-          <div class="intel-r"><div class="intel-l">Attribution / Intel</div><div class="intel-v">IMP Burn places VEHICLE-342 in degraded orbit 6–8 days. Mission re-plan required. Not recommended at this time.</div></div>
+          <div class="intel-r"><div class="intel-l">Attribution / Intel</div><div class="intel-v">IMP Burn places OPS-7 in degraded orbit 6–8 days. Mission re-plan required. Not recommended at this time.</div></div>
           <div class="conf-row"><span class="conf-l">Confidence</span><div class="conf-t"><div class="conf-f" style="width:58%;background:#5A3A18"></div></div><span class="conf-v" style="color:#E04444">58%</span></div>
         </div>
       </div>
@@ -1333,8 +1333,8 @@ canvas#globe { display:block; width:100%; height:100%; }
   <div class="toast" id="toast" onclick="clickToast()">
     <div class="toast-dot"></div>
     <div class="toast-body">
-      <div class="toast-title">ANOMALY DETECTED · VEHICLE-48821</div>
-      <div class="toast-sub">Unexpected burn sequence · DEV 9 · VEHICLE-342 at risk · Click to review</div>
+      <div class="toast-title">ANOMALY DETECTED · Solstice-9</div>
+      <div class="toast-sub">Unexpected burn sequence · DEV 9 · OPS-7 at risk · Click to review</div>
     </div>
     <div class="toast-cta">Review →</div>
   </div>
@@ -1355,13 +1355,13 @@ canvas#globe { display:block; width:100%; height:100%; }
       <div class="dialog-card" id="dialog-card">
         <div class="dialog-card-title" id="dialog-coa-title">—</div>
         <div class="dialog-card-fields">
-          <div><div class="fl">Anomalous Object</div><div class="fv thr">VEHICLE-48821</div></div>
-          <div><div class="fl">vehicle at Risk</div><div class="fv hi">VEHICLE-342</div></div>
+          <div><div class="fl">Anomalous Object</div><div class="fv thr">Solstice-9</div></div>
+          <div><div class="fl">Vehicle at Risk</div><div class="fv hi">OPS-7</div></div>
           <div><div class="fl">DEV Score</div><div class="fv thr">9 / 10</div></div>
         </div>
       </div>
       <div class="dialog-body-text">
-        Confirming will transmit this COA to <strong>USSPACECOM</strong> and lock the decision package. This action will be logged with your operator ID <strong>OPERATOR 1</strong> and timestamp. It cannot be undone.
+        Confirming will transmit this COA to <strong>C2 COMMAND</strong> and lock the decision package. This action will be logged with your operator ID <strong>OPERATOR 1</strong> and timestamp. It cannot be undone.
       </div>
     </div>
     <div class="dialog-footer">
@@ -1409,14 +1409,14 @@ window.getEarth = () => earth;
 function buildCOAPaths(selectedCOA) {
   if(!selectedCOA || typeof lerpPts === 'undefined') return [];
 
-  // Base: VEHICLE approach (always shown at L2, solid red)
+  // Base: NORAD approach (always shown at L2, solid red)
   const noradPath = { id:'pn48act', pnts:lerpPts(29,-68,33,-55,60,-2.2,1.8), color:'rgba(224,68,68,0.8)', dashed:false };
 
-  // COA A — Evasive Maneuver: VEHICLE-342 breaks away upward (cyan)
+  // COA A — Evasive Maneuver: OPS-7 breaks away upward (cyan)
   const coaA = { id:'coa-a', pnts:lerpPts(28,-70,38,-44,60, 3.5,-2.0), color: selectedCOA==='a' ? 'rgba(0,204,204,0.9)' : 'rgba(0,204,204,0.25)', dashed: selectedCOA!=='a' };
-  // COA B — Hold & Monitor: VEHICLE-342 continues nominal (slight drift, cyan)
+  // COA B — Hold & Monitor: OPS-7 continues nominal (slight drift, cyan)
   const coaB = { id:'coa-b', pnts:lerpPts(28,-70,35,-52,60, 0.4, 0.4), color: selectedCOA==='b' ? 'rgba(0,204,204,0.9)' : 'rgba(0,204,204,0.25)', dashed: selectedCOA!=='b' };
-  // COA C — Emergency IMP Burn: VEHICLE-342 dips down hard away (cyan)
+  // COA C — Emergency IMP Burn: OPS-7 dips down hard away (cyan)
   const coaC = { id:'coa-c', pnts:lerpPts(28,-70,24,-58,60,-4.0, 1.5), color: selectedCOA==='c' ? 'rgba(0,204,204,0.9)' : 'rgba(0,204,204,0.25)', dashed: selectedCOA!=='c' };
 
   return [noradPath, coaA, coaB, coaC];
