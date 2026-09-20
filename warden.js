@@ -6,7 +6,7 @@ let appState = 'L0'; // L0 | L1 | L2 | CONFIRMED
 let selectedVehicle = null;
 let selectedCOA = null;
 let activeCOAPreview = null; // 'a' | 'b' | 'c' — drives globe COA trajectory overlay
-let threatActive = true;
+let anomalyActive = true;
 let coaLocked = false;
 let toastTimer = null;
 
@@ -31,7 +31,7 @@ setTimeout(()=>{
 }, 3000);
 
 // ═══════════════════════════════════
-// TOAST CLICK → activate threat workflow
+// TOAST CLICK → activate anomaly workflow
 // ═══════════════════════════════════
 function clickToast(){
   document.getElementById('toast').classList.remove('vis');
@@ -85,7 +85,7 @@ function activateThreat(){
   const tabDev = document.getElementById('tab-dev');
   tabDev.classList.remove('disabled');
 
-  // Update vehicle tags to show threat
+  // Update vehicle tags to show anomaly
   // Update MIL-STD symbol stroke colors to orange at L2
   document.querySelectorAll('#vdot-usa342 svg circle, #vdot-usa342 svg line').forEach(el=>el.setAttribute('stroke','#E04444'));
   document.querySelectorAll('#vdot-usa342 svg circle').forEach(el=>el.setAttribute('fill','rgba(204,51,51,0.08)'));
@@ -98,12 +98,12 @@ function activateThreat(){
   document.getElementById('n48821-dev').textContent = '9 / 10';
   document.getElementById('n48821-dev').className = 'fv thr';
   // Reveal bidirectional cross-links
-  document.getElementById('link-usa342-threat').style.display = 'block';
+  document.getElementById('link-usa342-anomaly').style.display = 'block';
   document.getElementById('link-48821-asset').style.display  = 'block';
 
   // Auto-switch to deviation tab
   const tabEl = document.getElementById('tab-dev');
-  leftTab(tabEl, 'threat-intel');
+  leftTab(tabEl, 'anomaly-intel');
 
   // Show dev content
   document.getElementById('dev-empty').style.display = 'none';
@@ -133,7 +133,7 @@ function activateThreat(){
 // ═══════════════════════════════════
 function leftTab(btn, id){
   if(btn.classList.contains('disabled')) return;
-  ['vehicles','soh','timeline','contacts','threat-intel'].forEach(t=>{
+  ['vehicles','soh','timeline','contacts','anomaly-intel'].forEach(t=>{
     const el=document.getElementById('lt-'+t);
     if(el) el.style.display='none';
   });
@@ -356,7 +356,7 @@ const TL_COLOR = { maneuver:'#4A8FD4', contact:'#7A8A9A', sensor:'#5A9A6A', anom
 
 const VEH_TIMELINE = {
   'usa342': [
-    { ts:'2026-03-19 · 03:47:33Z', type:'anomaly',  label:'L2 Escalation',         tx:'OPR REYES escalated NORAD-48821 threat to L2', detail:'DEV 9 · Pc 0.013 · USA-342 designated Asset at Risk' },
+    { ts:'2026-03-19 · 03:47:33Z', type:'anomaly',  label:'L2 Escalation',         tx:'OPR REYES escalated NORAD-48821 anomaly to L2', detail:'DEV 9 · Pc 0.013 · USA-342 designated Asset at Risk' },
     { ts:'2026-03-19 · 03:44:01Z', type:'anomaly',  label:'L1 Alert Fired',         tx:'Automated L1 alert triggered on NORAD-48821', detail:'Unexpected burn sequence detected · WARDEN retasked' },
     { ts:'2026-03-19 · 03:18:44Z', type:'contact',  label:'Uplink · Schriever',     tx:'Telemetry downlink and command uplink completed', detail:'Duration 8m 42s · Ka-Band · 2.4 Gbps · All subsystems nominal' },
     { ts:'2026-03-19 · 01:44:10Z', type:'sensor',   label:'Sensor Retask',          tx:'EO/IR tasked to cover new collection priority', detail:'Collection window 14m · Region: North Atlantic · Priority: HIGH' },
@@ -468,7 +468,7 @@ function selectVehicle(id){
   renderQueue(id);
   updateStatBar(id);
 
-  // Show deviation content if relevant vehicle selected and threat is active
+  // Show deviation content if relevant vehicle selected and anomaly is active
   if(appState !== 'L0' && (id === 'usa342' || id === 'n48821')){
     document.getElementById('dev-empty').style.display='none';
     document.getElementById('dev-content').style.display='block';
@@ -878,7 +878,7 @@ function getFilters(){
   return {
     showOurs:   !!document.getElementById('f-ours')?.checked,
     showGs:     !!document.getElementById('f-gs')?.checked,
-    showThreat: !!document.getElementById('f-threat')?.checked,
+    showThreat: !!document.getElementById('f-anomaly')?.checked,
     showMon:    !!document.getElementById('f-monitor')?.checked,
     showNom:    !!document.getElementById('f-nom')?.checked,
     showRisk:   !!document.getElementById('f-atrisk')?.checked,
@@ -917,7 +917,7 @@ window.updateGlobeLayers = updateGlobeLayers;
 
 // Wire filter checkboxes
 document.addEventListener('DOMContentLoaded', () => {
-  ['f-ours','f-gs','f-threat','f-monitor','f-nom','f-atrisk','f-traj'].forEach(id => {
+  ['f-ours','f-gs','f-anomaly','f-monitor','f-nom','f-atrisk','f-traj'].forEach(id => {
     document.getElementById(id)?.addEventListener('change', updateGlobeLayers);
   });
 });
@@ -1011,7 +1011,7 @@ function drawCloseUp(id, W, H){
     // COA definitions — each COA is a *continuation* from nowT to 1.0
     // using a different arc profile. We parameterise as:
     //   arcWMult  — how wide the forward arc is relative to arcW
-    //   arcHMult  — how much extra lift/sink (positive = up = away from threat)
+    //   arcHMult  — how much extra lift/sink (positive = up = away from anomaly)
     //   col       — path color (all USA-342 = friendly cyan, NORAD paths = hostile red)
     const USA_COL = '#00CCCC'; // friendly MIL-STD cyan — tied to vehicle, not COA
     const coaDefs = {
@@ -1253,7 +1253,7 @@ function drawCloseUp(id, W, H){
     ctx.save();ctx.translate(last.x,last.y);ctx.rotate(ang);
     ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(-8,-4);ctx.lineTo(-8,4);ctx.closePath();
     ctx.fillStyle=devColor;ctx.fill();ctx.restore();
-    // Current position on deviation path (~60% along for active threat)
+    // Current position on deviation path (~60% along for active anomaly)
     const devProgress = vd.type==='t' ? 0.60 : 0.42;
     const devPosIdx = Math.floor(dpts.length * devProgress);
     const devPos = dpts[devPosIdx];
@@ -1329,7 +1329,7 @@ function getFilters(){
   return {
     showOurs:    document.getElementById('f-ours')?.checked,
     showGs:      document.getElementById('f-gs')?.checked,
-    showThreat:  document.getElementById('f-threat')?.checked,
+    showThreat:  document.getElementById('f-anomaly')?.checked,
     showMon:     document.getElementById('f-monitor')?.checked,
     showNom:     document.getElementById('f-nom')?.checked,
     showRisk:    document.getElementById('f-atrisk')?.checked,
