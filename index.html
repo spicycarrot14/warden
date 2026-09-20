@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>WARDEN — SDA Threat Response</title>
+<title>WARDEN — Automated C2 System</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 
@@ -270,7 +270,7 @@ html, body { width:100%; height:100%; background:#000; font-family:'Inter',sans-
 .coa-card.readonly { cursor:default; }
 .card-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
 .card-left { display:flex; flex-direction:column; gap:1px; }
-.coa-id   { font-size:11px; color:#7A8A9A; letter-spacing:1px; font-weight:600; }
+.coa-id   { font-size:12px; color:#7A8A9A; letter-spacing:1px; font-weight:600; }
 .coa-nm   { font-size:13px; font-weight:700; color:#DDEEFF; }
 .card-right { display:flex; align-items:center; gap:7px; }
 .risk-tag { font-size:12px; font-weight:700; padding:2px 6px; border-radius:2px; letter-spacing:.5px; text-transform:uppercase; }
@@ -437,7 +437,7 @@ canvas#globe { display:block; width:100%; height:100%; }
   <div class="tb-left">
     <span class="tb-logo">WARDEN</span>
     <div class="tb-sep"></div>
-    <span class="tb-mission">WARDEN · SDA THREAT RESPONSE</span>
+    <span class="tb-mission">WARDEN · AUTOMATED C2</span>
   </div>
   <div class="tb-right">
     <div class="alert-pill" id="alert-pill" onclick="clickAlert()">
@@ -464,7 +464,7 @@ canvas#globe { display:block; width:100%; height:100%; }
   <div class="panel-header">
     <div class="panel-meta">
       <div>
-        <div class="panel-title" id="left-title">SDA MONITOR</div>
+        <div class="panel-title" id="left-title">C2 MONITOR</div>
         <div class="panel-sub" id="left-sub">Select a vehicle to view details</div>
       </div>
       <div class="state-badge l0" id="left-badge">L0 — MONITORING</div>
@@ -504,7 +504,7 @@ canvas#globe { display:block; width:100%; height:100%; }
       <div class="acc-body" id="vbody-usa342">
         <div class="acc-fields">
           <div><div class="fl">Designation</div><div class="fv hi">USA-342</div></div>
-          <div><div class="fl">Owner</div><div class="fv">USSF / NRO</div></div>
+          <div><div class="fl">Owner</div><div class="fv">OPR / NRO</div></div>
           <div><div class="fl">Orbit</div><div class="fv">LEO 518km</div></div>
           <div><div class="fl">Inclination</div><div class="fv">97.4°</div></div>
           <div><div class="fl">Mission</div><div class="fv">ISR</div></div>
@@ -542,7 +542,7 @@ canvas#globe { display:block; width:100%; height:100%; }
       <div class="acc-body">
         <div class="acc-fields">
           <div><div class="fl">Designation</div><div class="fv hi">USA-289</div></div>
-          <div><div class="fl">Owner</div><div class="fv">NSA / USSF</div></div>
+          <div><div class="fl">Owner</div><div class="fv">NSA / OPR</div></div>
           <div><div class="fl">Orbit</div><div class="fv">LEO 503km</div></div>
           <div><div class="fl">Sensor Suite</div><div class="fv">SIGINT Array</div></div>
         </div>
@@ -571,7 +571,7 @@ canvas#globe { display:block; width:100%; height:100%; }
       <div class="acc-body">
         <div class="acc-fields">
           <div><div class="fl">Designation</div><div class="fv hi">USA-301</div></div>
-          <div><div class="fl">Owner</div><div class="fv">NRO / USSF</div></div>
+          <div><div class="fl">Owner</div><div class="fv">NRO / OPR</div></div>
           <div><div class="fl">Orbit</div><div class="fv">LEO 534km</div></div>
           <div><div class="fl">Sensor Suite</div><div class="fv">EO · MWIR · LWIR</div></div>
         </div>
@@ -1003,7 +1003,7 @@ canvas#globe { display:block; width:100%; height:100%; }
           </svg>
           <div style="flex:1">
             <div style="font-size:12px;font-weight:700;color:#00CCCC">USA-342</div>
-            <div style="font-size:12px;color:#4A5A6A;letter-spacing:.4px">FRIENDLY · USSF/NRO · ISR · LEO 518km</div>
+            <div style="font-size:12px;color:#4A5A6A;letter-spacing:.4px">FRIENDLY · OPERATOR/NRO · ISR · LEO 518km</div>
           </div>
           <span style="font-size:12px;font-weight:700;color:#DDEEFF;letter-spacing:.5px;background:rgba(221,238,255,0.06);padding:2px 6px;border:1px solid rgba(221,238,255,0.15);border-radius:2px">SELECTED</span>
         </div>
@@ -1120,7 +1120,7 @@ canvas#globe { display:block; width:100%; height:100%; }
     </div>
     <div class="filter-group">
       <div class="filter-group-lbl">Our Assets</div>
-      <label class="filter-item"><input type="checkbox" class="f-cb" id="f-ours" checked onchange="updateGlobeLayers()"><div class="f-dot" style="background:#4A8FD4"></div><span class="f-lbl">USSF Vehicles</span></label>
+      <label class="filter-item"><input type="checkbox" class="f-cb" id="f-ours" checked onchange="updateGlobeLayers()"><div class="f-dot" style="background:#4A8FD4"></div><span class="f-lbl">Operator Vehicles</span></label>
       <label class="filter-item"><input type="checkbox" class="f-cb" id="f-gs" checked onchange="updateGlobeLayers()"><div class="f-dot" style="background:#2A5A8A"></div><span class="f-lbl">Ground Stations</span></label>
     </div>
     <div class="filter-group">
@@ -1247,7 +1247,7 @@ canvas#globe { display:block; width:100%; height:100%; }
         </svg>
         <div style="flex:1;min-width:0;overflow:hidden">
           <div style="font-size:12px;color:#7A8A9A;letter-spacing:.8px;text-transform:uppercase;font-weight:600;margin-bottom:1px">Protecting</div>
-          <div style="font-size:12px;font-weight:700;color:#00CCCC;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">USA-342 · USSF/NRO · ISR · LEO 518km</div>
+          <div style="font-size:12px;font-weight:700;color:#00CCCC;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">USA-342 · OPERATOR/NRO · ISR · LEO 518km</div>
         </div>
         <span style="flex-shrink:0;font-size:12px;font-weight:700;color:#00CCCC;border:1px solid rgba(0,204,204,0.3);padding:2px 6px;border-radius:2px;white-space:nowrap">SELECTED</span>
       </div>

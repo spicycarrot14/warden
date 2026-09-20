@@ -312,9 +312,9 @@ function toggleMath(id){
 // VEHICLE SELECTION
 // ═══════════════════════════════════
 const VEH_META = {
-  'usa342':    { title:'USA-342',        sub:'LEO 518km · ISR · USSF/NRO' },
-  'usa289':    { title:'USA-289',        sub:'LEO 503km · SIGINT · NSA/USSF' },
-  'usa301':    { title:'USA-301',        sub:'LEO 534km · EO/IR · NRO/USSF' },
+  'usa342':    { title:'USA-342',        sub:'LEO 518km · ISR · OPERATOR/NRO' },
+  'usa289':    { title:'USA-289',        sub:'LEO 503km · SIGINT · NSA/OPR' },
+  'usa301':    { title:'USA-301',        sub:'LEO 534km · EO/IR · NRO/OPR' },
   'n48821':    { title:'NORAD-48821',    sub:'LEO 520km · Inspector · PRC/CNSA' },
   'cosmos2558':{ title:'Cosmos-2558',    sub:'LEO 541km · Inspector · RU/VKS' },
 };
@@ -356,7 +356,7 @@ const TL_COLOR = { maneuver:'#4A8FD4', contact:'#7A8A9A', sensor:'#5A9A6A', anom
 
 const VEH_TIMELINE = {
   'usa342': [
-    { ts:'2026-03-19 · 03:47:33Z', type:'anomaly',  label:'L2 Escalation',         tx:'SGT REYES escalated NORAD-48821 threat to L2', detail:'DEV 9 · Pc 0.013 · USA-342 designated Asset at Risk' },
+    { ts:'2026-03-19 · 03:47:33Z', type:'anomaly',  label:'L2 Escalation',         tx:'OPR REYES escalated NORAD-48821 threat to L2', detail:'DEV 9 · Pc 0.013 · USA-342 designated Asset at Risk' },
     { ts:'2026-03-19 · 03:44:01Z', type:'anomaly',  label:'L1 Alert Fired',         tx:'Automated L1 alert triggered on NORAD-48821', detail:'Unexpected burn sequence detected · WARDEN retasked' },
     { ts:'2026-03-19 · 03:18:44Z', type:'contact',  label:'Uplink · Schriever',     tx:'Telemetry downlink and command uplink completed', detail:'Duration 8m 42s · Ka-Band · 2.4 Gbps · All subsystems nominal' },
     { ts:'2026-03-19 · 01:44:10Z', type:'sensor',   label:'Sensor Retask',          tx:'EO/IR tasked to cover new collection priority', detail:'Collection window 14m · Region: North Atlantic · Priority: HIGH' },
@@ -570,7 +570,7 @@ function executeConfirm(){
   const n={a:'COA-A · Evasive Maneuver',b:'COA-B · Hold & Monitor',c:'COA-C · Emergency IMP Burn'};
 
   // Show confirmed badge
-  document.getElementById('confirmed-text').textContent = `${n[selectedCOA]} · ${ts} · SGT REYES`;
+  document.getElementById('confirmed-text').textContent = `${n[selectedCOA]} · ${ts} · OPR REYES`;
   document.getElementById('confirmed-badge').classList.add('vis');
 
   // Lock all cards
@@ -976,7 +976,7 @@ function drawCloseUp(id, W, H){
   ctx.textAlign='center';
   ctx.fillStyle='#7A8A9A'; ctx.font='14px Inter,sans-serif';
 
-  const typeLabel = {a:'ASSET AT RISK',ours:'USSF VEHICLE',t:'THREAT',m:'MONITORED'}[vd.type]||'TRACKED';
+  const typeLabel = {a:'ASSET AT RISK',ours:'OPERATOR VEHICLE',t:'THREAT',m:'MONITORED'}[vd.type]||'TRACKED';
   const typeCol   = typeColor(vd.type);
   ctx.fillStyle=typeCol;
   ctx.fillText(typeLabel, cx, 56);
