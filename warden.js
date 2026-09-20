@@ -99,7 +99,7 @@ function activateThreat(){
   document.getElementById('n48821-dev').className = 'fv thr';
   // Reveal bidirectional cross-links
   document.getElementById('link-usa342-anomaly').style.display = 'block';
-  document.getElementById('link-48821-asset').style.display  = 'block';
+  document.getElementById('link-48821-vehicle').style.display  = 'block';
 
   // Auto-switch to deviation tab
   const tabEl = document.getElementById('tab-dev');
@@ -117,7 +117,7 @@ function activateThreat(){
   const tabCoa = document.getElementById('tab-coa');
   if(tabCoa) rightTab(tabCoa, 'coa');
 
-  // Select USA-342 as the asset we're protecting — highlight it
+  // Select USA-342 as the vehicle we're protecting — highlight it
   selectedVehicle = 'usa342';
   selectVehicle('usa342');
 
@@ -1015,9 +1015,9 @@ function drawCloseUp(id, W, H){
     //   col       — path color (all USA-342 = friendly cyan, NORAD paths = hostile red)
     const USA_COL = '#00CCCC'; // friendly MIL-STD cyan — tied to vehicle, not COA
     const coaDefs = {
-      a: { col:USA_COL, label:'COA-A · Evasive Maneuver',      risk:'LOW',  arcWMult:0.72, arcHMult: 1.55, noradMiss: true,  missBy:'~18 km' },
-      b: { col:USA_COL, label:'COA-B · Hold & Monitor',         risk:'MED',  arcWMult:0.68, arcHMult: 0.45, noradMiss: false, missBy:'~2.1 km' },
-      c: { col:USA_COL, label:'COA-C · Emergency IMP Burn',     risk:'HIGH', arcWMult:0.78, arcHMult:-1.20, noradMiss: true,  missBy:'~31 km' },
+      a: { col:USA_COL, label:'COA-A · Evasive Maneuver',      risk:'LOW',  arcWMult:0.72, arcHMult: 1.55, vehicleMiss: true,  missBy:'~18 km' },
+      b: { col:USA_COL, label:'COA-B · Hold & Monitor',         risk:'MED',  arcWMult:0.68, arcHMult: 0.45, vehicleMiss: false, missBy:'~2.1 km' },
+      c: { col:USA_COL, label:'COA-C · Emergency IMP Burn',     risk:'HIGH', arcWMult:0.78, arcHMult:-1.20, vehicleMiss: true,  missBy:'~31 km' },
     };
 
     // ── NORAD-48821 current approach arc (always) ──
@@ -1118,26 +1118,26 @@ function drawCloseUp(id, W, H){
 
         // NORAD predicted outcome for selected COA
         // Project NORAD along its approach vector to where it ends up
-        const noradPredT = 0.88;
-        const noradPredX = (1-noradPredT)*(1-noradPredT)*nStartX+2*(1-noradPredT)*noradPredT*nCpX+noradPredT*noradPredT*nEndX + (d.noradMiss ? W*0.08 : W*0.01);
-        const noradPredY = (1-noradPredT)*(1-noradPredT)*nStartY+2*(1-noradPredT)*noradPredT*nCpY+noradPredT*noradPredT*nEndY + (d.noradMiss ? H*0.06 : 0);
+        const vehiclePredT = 0.88;
+        const vehiclePredX = (1-vehiclePredT)*(1-vehiclePredT)*nStartX+2*(1-vehiclePredT)*vehiclePredT*nCpX+vehiclePredT*vehiclePredT*nEndX + (d.vehicleMiss ? W*0.08 : W*0.01);
+        const vehiclePredY = (1-vehiclePredT)*(1-vehiclePredT)*nStartY+2*(1-vehiclePredT)*vehiclePredT*nCpY+vehiclePredT*vehiclePredT*nEndY + (d.vehicleMiss ? H*0.06 : 0);
         const nPredPulse = 0.5+0.5*Math.sin(animFrame*0.11);
-        const nPredGlow  = ctx.createRadialGradient(noradPredX,noradPredY,0,noradPredX,noradPredY,18+nPredPulse*6);
-        const nAlpha = d.noradMiss ? 0.2 : 0.5;
+        const nPredGlow  = ctx.createRadialGradient(vehiclePredX,vehiclePredY,0,vehiclePredX,vehiclePredY,18+nPredPulse*6);
+        const nAlpha = d.vehicleMiss ? 0.2 : 0.5;
         nPredGlow.addColorStop(0,'rgba(204,51,51,'+nAlpha+')'); nPredGlow.addColorStop(1,'rgba(204,51,51,0)');
-        ctx.beginPath(); ctx.arc(noradPredX,noradPredY,18+nPredPulse*6,0,Math.PI*2); ctx.fillStyle=nPredGlow; ctx.fill();
-        ctx.save(); ctx.translate(noradPredX,noradPredY); ctx.rotate(Math.PI/4);
-        ctx.strokeStyle=d.noradMiss?'rgba(204,51,51,0.35)':'#E04444'; ctx.lineWidth=1.5;
-        ctx.fillStyle=d.noradMiss?'rgba(204,51,51,0.05)':'rgba(204,51,51,0.18)';
+        ctx.beginPath(); ctx.arc(vehiclePredX,vehiclePredY,18+nPredPulse*6,0,Math.PI*2); ctx.fillStyle=nPredGlow; ctx.fill();
+        ctx.save(); ctx.translate(vehiclePredX,vehiclePredY); ctx.rotate(Math.PI/4);
+        ctx.strokeStyle=d.vehicleMiss?'rgba(204,51,51,0.35)':'#E04444'; ctx.lineWidth=1.5;
+        ctx.fillStyle=d.vehicleMiss?'rgba(204,51,51,0.05)':'rgba(204,51,51,0.18)';
         ctx.beginPath(); ctx.rect(-5,-5,10,10); ctx.fill(); ctx.stroke(); ctx.restore();
-        ctx.fillStyle=d.noradMiss?'rgba(204,51,51,0.6)':'#E04444'; ctx.font='12px Inter,sans-serif';
-        ctx.fillText('NORAD-48821 (predicted)', noradPredX+10, noradPredY-2);
-        if(d.noradMiss){
+        ctx.fillStyle=d.vehicleMiss?'rgba(204,51,51,0.6)':'#E04444'; ctx.font='12px Inter,sans-serif';
+        ctx.fillText('NORAD-48821 (predicted)', vehiclePredX+10, vehiclePredY-2);
+        if(d.vehicleMiss){
           ctx.fillStyle='#2ECC71'; ctx.font='bold 12px Inter,sans-serif';
-          ctx.fillText('✓ MISS · '+d.missBy, noradPredX+10, noradPredY+10);
+          ctx.fillText('✓ MISS · '+d.missBy, vehiclePredX+10, vehiclePredY+10);
         } else {
           ctx.fillStyle='#E04444'; ctx.font='bold 12px Inter,sans-serif';
-          ctx.fillText('⚠ CLOSE PASS · '+d.missBy, noradPredX+10, noradPredY+10);
+          ctx.fillText('⚠ CLOSE PASS · '+d.missBy, vehiclePredX+10, vehiclePredY+10);
         }
       } else {
         ctx.beginPath(); ctx.arc(last.x,last.y,2.5,0,Math.PI*2); ctx.fillStyle=d.col; ctx.fill();
