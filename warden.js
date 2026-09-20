@@ -191,11 +191,11 @@ const VEH_QUEUE = {
   ],
   'ops4': [
     { offsetSec:2590,  type:'contact',  typeColor:'#7A8A9A', label:'Ground Contact · Site 2 SFB',  detail:'S-Band · Est. duration 8m',                          tab:'contacts', accordionId:'gs-vandenberg' },
-    { offsetSec:5100,  type:'sensor',   typeColor:'#5A9A6A', label:'SIGINT Collection Window',         detail:'Eastern Med · Wideband · 22m window',                tab:null },
+    { offsetSec:5100,  type:'sensor',   typeColor:'#5A9A6A', label:'Collection Window',         detail:'Priority Zone Alpha · 22m window',                tab:null },
     { offsetSec:7440,  type:'contact',  typeColor:'#7A8A9A', label:'Ground Contact · Site 8',     detail:'X-Band · Est. duration 7m',                          tab:'contacts', accordionId:'gs-hawaii' },
   ],
   'ops9': [
-    { offsetSec:1980,  type:'sensor',   typeColor:'#5A9A6A', label:'EO/IR Collection Window',          detail:'Western Pacific · MWIR · Priority MED',              tab:null },
+    { offsetSec:1980,  type:'sensor',   typeColor:'#5A9A6A', label:'Collection Window',          detail:'Priority Zone Bravo · Priority MED',              tab:null },
     { offsetSec:3750,  type:'contact',  typeColor:'#7A8A9A', label:'Ground Contact · Site 1',   detail:'Ka-Band · Est. duration 9m',                         tab:'contacts', accordionId:'gs-site1' },
     { offsetSec:6300,  type:'maneuver', typeColor:'#4A8FD4', label:'Stationkeeping Burn',              detail:'Δv +0.5 m/s · Routine',                              tab:null },
   ],
@@ -312,9 +312,9 @@ function toggleMath(id){
 // VEHICLE SELECTION
 // ═══════════════════════════════════
 const VEH_META = {
-  'ops7':    { title:'OPS-7',        sub:'LEO 518km · ISR · OPR' },
-  'ops4':    { title:'OPS-4',        sub:'LEO 503km · SIGINT · OPR' },
-  'ops9':    { title:'OPS-9',        sub:'LEO 534km · EO/IR · OPR' },
+  'ops7':    { title:'OPS-7',        sub:'LEO 518km · OPR' },
+  'ops4':    { title:'OPS-4',        sub:'LEO 503km · OPR' },
+  'ops9':    { title:'OPS-9',        sub:'LEO 534km · OPR' },
   'solstice9':    { title:'Solstice-9',    sub:'LEO 520km · Inspector · STATE-A' },
   'equinox3':{ title:'Equinox-3',    sub:'LEO 541km · Inspector · STATE-B' },
 };
@@ -345,8 +345,8 @@ function updateStatBar(id){
     set('s-dev',     s.dev,     s.devAlert);
     set('s-alerts',  s.alerts,  s.alerts !== '0');
   }
-  // Tracked is always global
-  const tracked = document.getElementById('s-tracked');
+  // Monitored is always global
+  const tracked = document.getElementById('s-monitored2');
   if(tracked) tracked.textContent = Object.keys(VEH_DATA).length;
   if(tracked) tracked.style.color = '#DDEEFF';
 }
@@ -359,7 +359,7 @@ const VEH_TIMELINE = {
     { ts:'2026-03-19 · 03:47:33Z', type:'anomaly',  label:'L2 Escalation',         tx:'OPERATOR 1 escalated Solstice-9 anomaly to L2', detail:'DEV 9 · Pc 0.013 · OPS-7 designated Vehicle at Risk' },
     { ts:'2026-03-19 · 03:44:01Z', type:'anomaly',  label:'L1 Alert Fired',         tx:'Automated L1 alert triggered on Solstice-9', detail:'Unexpected burn sequence detected · WARDEN retasked' },
     { ts:'2026-03-19 · 03:18:44Z', type:'contact',  label:'Uplink · Site 1',     tx:'Telemetry downlink and command uplink completed', detail:'Duration 8m 42s · Ka-Band · 2.4 Gbps · All subsystems nominal' },
-    { ts:'2026-03-19 · 01:44:10Z', type:'sensor',   label:'Sensor Retask',          tx:'EO/IR tasked to cover new collection priority', detail:'Collection window 14m · Region: North Atlantic · Priority: HIGH' },
+    { ts:'2026-03-19 · 01:44:10Z', type:'sensor',   label:'Sensor Retask',          tx:'Sensor tasked to cover new collection priority', detail:'Collection window 14m · Zone: Alpha · Priority: HIGH' },
     { ts:'2026-03-18 · 22:31:55Z', type:'contact',  label:'Uplink · Site 5', tx:'Routine contact and ephemeris upload', detail:'Duration 6m 18s · Ka-Band · NAV update applied' },
     { ts:'2026-03-18 · 19:08:30Z', type:'maneuver', label:'Stationkeeping Burn',    tx:'Scheduled drag makeup maneuver executed', detail:'Δv +0.4 m/s · Fuel used: 0.3% · Post-burn orbit nominal' },
     { ts:'2026-03-18 · 14:52:14Z', type:'sensor',   label:'Sensor Retask',          tx:'SAR tasked to cover maritime collection zone', detail:'Collection window 9m · 2 of 8 array elements offline — partial coverage' },
@@ -369,20 +369,20 @@ const VEH_TIMELINE = {
   ],
   'ops4': [
     { ts:'2026-03-19 · 03:41:02Z', type:'contact',  label:'Uplink · Site 2',    tx:'Telemetry pass completed', detail:'Duration 7m 55s · S-Band · Narrowband dropout noted · 3 events / 6hr' },
-    { ts:'2026-03-19 · 02:14:20Z', type:'sensor',   label:'SIGINT Retask',          tx:'Wideband collection shifted to new priority region', detail:'Region: Eastern Mediterranean · Window: 22m · Collection nominal' },
+    { ts:'2026-03-19 · 02:14:20Z', type:'sensor',   label:'Sensor Retask',          tx:'Collection shifted to new priority region', detail:'Zone: Alpha · Window: 22m · Collection nominal' },
     { ts:'2026-03-19 · 00:55:10Z', type:'anomaly',  label:'Receiver Anomaly',       tx:'Narrowband receiver intermittent dropout detected', detail:'3 dropout events in 6hr window · Under monitoring · No action taken' },
     { ts:'2026-03-18 · 21:30:44Z', type:'contact',  label:'Uplink · Site 6',    tx:'Contact and NAV update', detail:'Duration 5m 12s · X-Band · Fuel reserve noted at 61% — below threshold' },
     { ts:'2026-03-18 · 18:08:00Z', type:'maneuver', label:'Stationkeeping Burn',    tx:'Scheduled orbit maintenance burn', detail:'Δv +0.3 m/s · Fuel used: 0.4% · Fuel reserve now 61%' },
-    { ts:'2026-03-18 · 15:44:55Z', type:'sensor',   label:'SIGINT Retask',          tx:'Collection priority update — new tasking order received', detail:'Wideband array repositioned · Window 18m' },
+    { ts:'2026-03-18 · 15:44:55Z', type:'sensor',   label:'Sensor Retask',          tx:'Collection priority update — new tasking order received', detail:'Sensor repositioned · Window 18m' },
     { ts:'2026-03-18 · 12:00:30Z', type:'contact',  label:'Uplink · Site 2',    tx:'Scheduled pass · crypto expiry warning logged', detail:'Crypto/crypto key expires in 3 days · Action required' },
     { ts:'2026-03-17 · 20:33:15Z', type:'anomaly',  label:'Crypto Warning',         tx:'crypto key key expiry flagged by ground system', detail:'Expiry: 2026-03-22 · Renewal pending scheduling' },
-    { ts:'2026-03-17 · 14:10:00Z', type:'contact',  label:'Uplink · Site 8',   tx:'Contact and telemetry download', detail:'Duration 6m 40s · X-Band · All subsystems nominal except narrowband' },
+    { ts:'2026-03-17 · 14:10:00Z', type:'contact',  label:'Uplink · Site 8',   tx:'Contact and telemetry download', detail:'Duration 6m 40s · X-Band · All subsystems nominal' },
   ],
   'ops9': [
     { ts:'2026-03-19 · 03:07:18Z', type:'contact',  label:'Uplink · Site 1',     tx:'Routine telemetry and command pass', detail:'Duration 9m 22s · Ka-Band · All subsystems nominal' },
-    { ts:'2026-03-19 · 01:15:44Z', type:'sensor',   label:'EO/IR Retask',           tx:'MWIR collection window opened over priority zone', detail:'Region: Western Pacific · Window: 17m · Collection complete' },
+    { ts:'2026-03-19 · 01:15:44Z', type:'sensor',   label:'Sensor Retask',           tx:'Collection window opened over priority zone', detail:'Zone: Bravo · Window: 17m · Collection complete' },
     { ts:'2026-03-18 · 22:48:00Z', type:'contact',  label:'Uplink · Site 5', tx:'NAV ephemeris upload and downlink', detail:'Duration 7m 10s · Ka-Band · Nominal' },
-    { ts:'2026-03-18 · 20:30:00Z', type:'sensor',   label:'LWIR Retask',            tx:'LWIR tasked for thermal imaging pass', detail:'Region: North Africa · Window: 11m · Nominal' },
+    { ts:'2026-03-18 · 20:30:00Z', type:'sensor',   label:'Imaging Retask',            tx:'Imaging tasked for thermal imaging pass', detail:'Region: North Africa · Window: 11m · Nominal' },
     { ts:'2026-03-18 · 17:02:33Z', type:'maneuver', label:'Stationkeeping Burn',    tx:'Scheduled drag makeup burn executed', detail:'Δv +0.5 m/s · Fuel used: 0.2% · Fuel reserve 88%' },
     { ts:'2026-03-18 · 13:55:00Z', type:'contact',  label:'Uplink · Site 2',    tx:'Scheduled pass', detail:'Duration 8m 04s · S-Band · All nominal' },
     { ts:'2026-03-18 · 10:20:15Z', type:'sensor',   label:'EO Retask',              tx:'High-resolution EO collection over priority target', detail:'Window: 8m · Nominal · Data recorded 28% capacity' },
@@ -529,7 +529,7 @@ function selectCOA(id){
   ['a','b','c'].forEach(c=>{document.getElementById('ca-'+c).classList.remove('sel-a','sel-b','sel-c');});
   document.getElementById('ca-'+id).classList.add('sel-'+id);
   selectedCOA=id;
-  const n={a:'COA-A · Evasive Maneuver',b:'COA-B · Hold & Monitor',c:'COA-C · Emergency IMP Burn'};
+  const n={a:'COA-A · Orbital Adjustment',b:'COA-B · Hold Position',c:'COA-C · Emergency Burn'};
   document.getElementById('sel-text').textContent=n[id];
   document.getElementById('sel-sum').classList.add('vis');
   const btn=document.getElementById('confirm-btn'); btn.disabled=false; btn.classList.add('rdy');
@@ -567,7 +567,7 @@ function executeConfirm(){
   coaLocked=true;
   const now=new Date();
   const ts=String(now.getUTCHours()).padStart(2,'0')+':'+String(now.getUTCMinutes()).padStart(2,'0')+':'+String(now.getUTCSeconds()).padStart(2,'0')+'Z';
-  const n={a:'COA-A · Evasive Maneuver',b:'COA-B · Hold & Monitor',c:'COA-C · Emergency IMP Burn'};
+  const n={a:'COA-A · Orbital Adjustment',b:'COA-B · Hold Position',c:'COA-C · Emergency Burn'};
 
   // Show confirmed badge
   document.getElementById('confirmed-text').textContent = `${n[selectedCOA]} · ${ts} · OPERATOR 1`;
@@ -805,7 +805,7 @@ function drawCloseUp(id, W, H){
   ctx.textAlign='center';
   ctx.fillStyle='#7A8A9A'; ctx.font='14px Inter,sans-serif';
 
-  const typeLabel = {a:'VEHICLE AT RISK',ours:'OPERATOR',t:'ANOMALY',m:'MONITORED'}[vd.type]||'TRACKED';
+  const typeLabel = {a:'VEHICLE AT RISK',ours:'OPERATOR',t:'ANOMALY',m:'MONITORED'}[vd.type]||'MONITORED';
   const typeCol   = typeColor(vd.type);
   ctx.fillStyle=typeCol;
   ctx.fillText(typeLabel, cx, 56);
@@ -844,9 +844,9 @@ function drawCloseUp(id, W, H){
     //   col       — path color (all OPS-7 = friendly cyan, NORAD paths = hostile red)
     const USA_COL = '#00CCCC'; // friendly MIL-STD cyan — tied to vehicle, not COA
     const coaDefs = {
-      a: { col:USA_COL, label:'COA-A · Evasive Maneuver',      risk:'LOW',  arcWMult:0.72, arcHMult: 1.55, noradMiss: true,  missBy:'~18 km' },
-      b: { col:USA_COL, label:'COA-B · Hold & Monitor',         risk:'MED',  arcWMult:0.68, arcHMult: 0.45, noradMiss: false, missBy:'~2.1 km' },
-      c: { col:USA_COL, label:'COA-C · Emergency IMP Burn',     risk:'HIGH', arcWMult:0.78, arcHMult:-1.20, noradMiss: true,  missBy:'~31 km' },
+      a: { col:USA_COL, label:'COA-A · Orbital Adjustment',      risk:'LOW',  arcWMult:0.72, arcHMult: 1.55, noradMiss: true,  missBy:'~18 km' },
+      b: { col:USA_COL, label:'COA-B · Hold Position',         risk:'MED',  arcWMult:0.68, arcHMult: 0.45, noradMiss: false, missBy:'~2.1 km' },
+      c: { col:USA_COL, label:'COA-C · Emergency Burn',     risk:'HIGH', arcWMult:0.78, arcHMult:-1.20, noradMiss: true,  missBy:'~31 km' },
     };
 
     // ── Solstice-9 current approach arc (always) ──
