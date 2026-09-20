@@ -35,13 +35,13 @@ setTimeout(()=>{
 // ═══════════════════════════════════
 function clickToast(){
   document.getElementById('toast').classList.remove('vis');
-  activateThreat();
+  activateAnomaly();
 }
 
 // Alert pill click
 function clickAlert(){
   if(appState === 'L0') return;
-  activateThreat();
+  activateAnomaly();
 }
 
 // Show monitor pill immediately — Cosmos-2558 is already being monitored
@@ -51,7 +51,7 @@ function clickAlert(){
   document.getElementById('mon-text').textContent = '1 MONITORED';
 })();
 
-function activateThreat(){
+function activateAnomaly(){
   appState = 'L2';
 
   // Force both sidebars open
@@ -71,14 +71,14 @@ function activateThreat(){
   setTimeout(()=>{ /* earth renderer handles resize */ }, 260);
 
   // Left panel title stays vehicle-driven — just update badge and sub
-  document.getElementById('left-sub').textContent = '2026-03-19 · 03:41:22Z · Threat Active';
-  document.getElementById('left-badge').textContent = 'L2 — THREAT CONFIRMED';
+  document.getElementById('left-sub').textContent = '2026-03-19 · 03:41:22Z · Anomaly Active';
+  document.getElementById('left-badge').textContent = 'L2 — ANOMALY CONFIRMED';
   document.getElementById('left-badge').className = 'state-badge';
 
   // Update right panel header
-  document.getElementById('right-title').textContent = 'THREAT RESPONSE';
+  document.getElementById('right-title').textContent = 'ANOMALY RESPONSE';
   document.getElementById('right-sub').textContent = '2026-03-19 · 03:41:22Z · NORAD-48821 → USA-342';
-  document.getElementById('right-badge').textContent = 'L2 — THREAT CONFIRMED';
+  document.getElementById('right-badge').textContent = 'L2 — ANOMALY CONFIRMED';
   document.getElementById('right-badge').className = 'state-badge';
 
   // Enable deviation tab
@@ -93,13 +93,13 @@ function activateThreat(){
   document.getElementById('vtag-usa342').innerHTML = '<span class="tag tag-risk">ASSET AT RISK</span>';
   document.querySelectorAll('#vdot-48821 svg polygon, #vdot-48821 svg line').forEach(el=>el.setAttribute('stroke','#E04444'));
   document.getElementById('vname-48821').style.color = '#E04444';
-  document.getElementById('vtag-48821').innerHTML = '<span class="tag tag-thr">THREAT</span>';
+  document.getElementById('vtag-48821').innerHTML = '<span class="tag tag-thr">ANOMALY</span>';
   document.getElementById('n48821-id').className = 'fv thr';
   document.getElementById('n48821-dev').textContent = '9 / 10';
   document.getElementById('n48821-dev').className = 'fv thr';
   // Reveal bidirectional cross-links
   document.getElementById('link-usa342-anomaly').style.display = 'block';
-  document.getElementById('link-48821-vehicle').style.display  = 'block';
+  document.getElementById('link-48821-asset').style.display  = 'block';
 
   // Auto-switch to deviation tab
   const tabEl = document.getElementById('tab-dev');
@@ -117,7 +117,7 @@ function activateThreat(){
   const tabCoa = document.getElementById('tab-coa');
   if(tabCoa) rightTab(tabCoa, 'coa');
 
-  // Select USA-342 as the vehicle we're protecting — highlight it
+  // Select USA-342 as the asset we're protecting — highlight it
   selectedVehicle = 'usa342';
   selectVehicle('usa342');
 
@@ -595,10 +595,10 @@ function executeConfirm(){
   document.getElementById('right-badge').style.borderColor='rgba(30,110,60,.4)';
   document.getElementById('right-badge').style.color='#2ECC71';
 
-  // Threat pill → quiet; monitor pill → 3 MONITORED
+  // Anomaly pill → quiet; monitor pill → 3 MONITORED
   const ap = document.getElementById('alert-pill');
   ap.classList.add('none');
-  document.getElementById('alert-text').textContent = '0 ACTIVE THREATS';
+  document.getElementById('alert-text').textContent = '0 ACTIVE ANOMALYS';
   document.getElementById('mon-text').textContent = '3 MONITORED';
   document.getElementById('vtag-usa342').innerHTML =
     '<span class="tag tag-mon">MONITOR</span><span class="tag tag-done" style="margin-left:4px">COA TRANSMITTED</span>';
@@ -878,7 +878,7 @@ function getFilters(){
   return {
     showOurs:   !!document.getElementById('f-ours')?.checked,
     showGs:     !!document.getElementById('f-gs')?.checked,
-    showThreat: !!document.getElementById('f-anomaly')?.checked,
+    showAnom: !!document.getElementById('f-anomaly')?.checked,
     showMon:    !!document.getElementById('f-monitor')?.checked,
     showNom:    !!document.getElementById('f-nom')?.checked,
     showRisk:   !!document.getElementById('f-atrisk')?.checked,
@@ -895,7 +895,7 @@ function updateGlobeLayers(){
   const vis = VEH_MARKERS.filter(d => {
     if((d.type==='ours')   && !f.showOurs)   return false;
     if((d.type==='a')      && !f.showRisk)   return false;
-    if((d.type==='t')      && !f.showThreat) return false;
+    if((d.type==='t')      && !f.showAnom) return false;
     if((d.type==='suspect')&& !f.showMon)    return false;
     return true;
   });
@@ -911,7 +911,7 @@ function updateGlobeLayers(){
   globe.pathsData(l2Active && f.showTraj ? buildPaths() : []);
 
   // Closing arc
-  globe.arcsData(l2Active && f.showTraj && f.showThreat && f.showRisk ? CLOSING_ARCS : []);
+  globe.arcsData(l2Active && f.showTraj && f.showAnom && f.showRisk ? CLOSING_ARCS : []);
 }
 window.updateGlobeLayers = updateGlobeLayers;
 
@@ -976,7 +976,7 @@ function drawCloseUp(id, W, H){
   ctx.textAlign='center';
   ctx.fillStyle='#7A8A9A'; ctx.font='14px Inter,sans-serif';
 
-  const typeLabel = {a:'ASSET AT RISK',ours:'OPERATOR VEHICLE',t:'THREAT',m:'MONITORED'}[vd.type]||'TRACKED';
+  const typeLabel = {a:'ASSET AT RISK',ours:'OPERATOR VEHICLE',t:'ANOMALY',m:'MONITORED'}[vd.type]||'TRACKED';
   const typeCol   = typeColor(vd.type);
   ctx.fillStyle=typeCol;
   ctx.fillText(typeLabel, cx, 56);
@@ -1015,9 +1015,9 @@ function drawCloseUp(id, W, H){
     //   col       — path color (all USA-342 = friendly cyan, NORAD paths = hostile red)
     const USA_COL = '#00CCCC'; // friendly MIL-STD cyan — tied to vehicle, not COA
     const coaDefs = {
-      a: { col:USA_COL, label:'COA-A · Evasive Maneuver',      risk:'LOW',  arcWMult:0.72, arcHMult: 1.55, vehicleMiss: true,  missBy:'~18 km' },
-      b: { col:USA_COL, label:'COA-B · Hold & Monitor',         risk:'MED',  arcWMult:0.68, arcHMult: 0.45, vehicleMiss: false, missBy:'~2.1 km' },
-      c: { col:USA_COL, label:'COA-C · Emergency IMP Burn',     risk:'HIGH', arcWMult:0.78, arcHMult:-1.20, vehicleMiss: true,  missBy:'~31 km' },
+      a: { col:USA_COL, label:'COA-A · Evasive Maneuver',      risk:'LOW',  arcWMult:0.72, arcHMult: 1.55, noradMiss: true,  missBy:'~18 km' },
+      b: { col:USA_COL, label:'COA-B · Hold & Monitor',         risk:'MED',  arcWMult:0.68, arcHMult: 0.45, noradMiss: false, missBy:'~2.1 km' },
+      c: { col:USA_COL, label:'COA-C · Emergency IMP Burn',     risk:'HIGH', arcWMult:0.78, arcHMult:-1.20, noradMiss: true,  missBy:'~31 km' },
     };
 
     // ── NORAD-48821 current approach arc (always) ──
@@ -1118,26 +1118,26 @@ function drawCloseUp(id, W, H){
 
         // NORAD predicted outcome for selected COA
         // Project NORAD along its approach vector to where it ends up
-        const vehiclePredT = 0.88;
-        const vehiclePredX = (1-vehiclePredT)*(1-vehiclePredT)*nStartX+2*(1-vehiclePredT)*vehiclePredT*nCpX+vehiclePredT*vehiclePredT*nEndX + (d.vehicleMiss ? W*0.08 : W*0.01);
-        const vehiclePredY = (1-vehiclePredT)*(1-vehiclePredT)*nStartY+2*(1-vehiclePredT)*vehiclePredT*nCpY+vehiclePredT*vehiclePredT*nEndY + (d.vehicleMiss ? H*0.06 : 0);
+        const noradPredT = 0.88;
+        const noradPredX = (1-noradPredT)*(1-noradPredT)*nStartX+2*(1-noradPredT)*noradPredT*nCpX+noradPredT*noradPredT*nEndX + (d.noradMiss ? W*0.08 : W*0.01);
+        const noradPredY = (1-noradPredT)*(1-noradPredT)*nStartY+2*(1-noradPredT)*noradPredT*nCpY+noradPredT*noradPredT*nEndY + (d.noradMiss ? H*0.06 : 0);
         const nPredPulse = 0.5+0.5*Math.sin(animFrame*0.11);
-        const nPredGlow  = ctx.createRadialGradient(vehiclePredX,vehiclePredY,0,vehiclePredX,vehiclePredY,18+nPredPulse*6);
-        const nAlpha = d.vehicleMiss ? 0.2 : 0.5;
+        const nPredGlow  = ctx.createRadialGradient(noradPredX,noradPredY,0,noradPredX,noradPredY,18+nPredPulse*6);
+        const nAlpha = d.noradMiss ? 0.2 : 0.5;
         nPredGlow.addColorStop(0,'rgba(204,51,51,'+nAlpha+')'); nPredGlow.addColorStop(1,'rgba(204,51,51,0)');
-        ctx.beginPath(); ctx.arc(vehiclePredX,vehiclePredY,18+nPredPulse*6,0,Math.PI*2); ctx.fillStyle=nPredGlow; ctx.fill();
-        ctx.save(); ctx.translate(vehiclePredX,vehiclePredY); ctx.rotate(Math.PI/4);
-        ctx.strokeStyle=d.vehicleMiss?'rgba(204,51,51,0.35)':'#E04444'; ctx.lineWidth=1.5;
-        ctx.fillStyle=d.vehicleMiss?'rgba(204,51,51,0.05)':'rgba(204,51,51,0.18)';
+        ctx.beginPath(); ctx.arc(noradPredX,noradPredY,18+nPredPulse*6,0,Math.PI*2); ctx.fillStyle=nPredGlow; ctx.fill();
+        ctx.save(); ctx.translate(noradPredX,noradPredY); ctx.rotate(Math.PI/4);
+        ctx.strokeStyle=d.noradMiss?'rgba(204,51,51,0.35)':'#E04444'; ctx.lineWidth=1.5;
+        ctx.fillStyle=d.noradMiss?'rgba(204,51,51,0.05)':'rgba(204,51,51,0.18)';
         ctx.beginPath(); ctx.rect(-5,-5,10,10); ctx.fill(); ctx.stroke(); ctx.restore();
-        ctx.fillStyle=d.vehicleMiss?'rgba(204,51,51,0.6)':'#E04444'; ctx.font='12px Inter,sans-serif';
-        ctx.fillText('NORAD-48821 (predicted)', vehiclePredX+10, vehiclePredY-2);
-        if(d.vehicleMiss){
+        ctx.fillStyle=d.noradMiss?'rgba(204,51,51,0.6)':'#E04444'; ctx.font='12px Inter,sans-serif';
+        ctx.fillText('NORAD-48821 (predicted)', noradPredX+10, noradPredY-2);
+        if(d.noradMiss){
           ctx.fillStyle='#2ECC71'; ctx.font='bold 12px Inter,sans-serif';
-          ctx.fillText('✓ MISS · '+d.missBy, vehiclePredX+10, vehiclePredY+10);
+          ctx.fillText('✓ MISS · '+d.missBy, noradPredX+10, noradPredY+10);
         } else {
           ctx.fillStyle='#E04444'; ctx.font='bold 12px Inter,sans-serif';
-          ctx.fillText('⚠ CLOSE PASS · '+d.missBy, vehiclePredX+10, vehiclePredY+10);
+          ctx.fillText('⚠ CLOSE PASS · '+d.missBy, noradPredX+10, noradPredY+10);
         }
       } else {
         ctx.beginPath(); ctx.arc(last.x,last.y,2.5,0,Math.PI*2); ctx.fillStyle=d.col; ctx.fill();
@@ -1329,7 +1329,7 @@ function getFilters(){
   return {
     showOurs:    document.getElementById('f-ours')?.checked,
     showGs:      document.getElementById('f-gs')?.checked,
-    showThreat:  document.getElementById('f-anomaly')?.checked,
+    showAnom:  document.getElementById('f-anomaly')?.checked,
     showMon:     document.getElementById('f-monitor')?.checked,
     showNom:     document.getElementById('f-nom')?.checked,
     showRisk:    document.getElementById('f-atrisk')?.checked,
