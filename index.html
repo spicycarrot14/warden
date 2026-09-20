@@ -442,7 +442,7 @@ canvas#globe { display:block; width:100%; height:100%; }
   <div class="tb-right">
     <div class="alert-pill" id="alert-pill" onclick="clickAlert()">
       <div class="alert-dot"></div>
-      <span id="alert-text">1 ACTIVE THREAT</span>
+      <span id="alert-text">1 ACTIVE ANOMALY</span>
     </div>
     <div class="mon-pill" id="mon-pill" onclick="clickAlert()">
       <div class="mon-dot"></div>
@@ -474,7 +474,7 @@ canvas#globe { display:block; width:100%; height:100%; }
       <button class="tab" id="tab-soh" onclick="leftTab(this,'soh')">SOH</button>
       <button class="tab" id="tab-tl"  onclick="leftTab(this,'timeline')">Timeline</button>
       <button class="tab" id="tab-con" onclick="leftTab(this,'contacts')">Contacts</button>
-      <button class="tab disabled" id="tab-dev" onclick="leftTab(this,'anomaly-intel')">Threats</button>
+      <button class="tab disabled" id="tab-dev" onclick="leftTab(this,'anomaly-intel')">Anomalies</button>
     </div>
   </div>
 
@@ -510,7 +510,7 @@ canvas#globe { display:block; width:100%; height:100%; }
           <div><div class="fl">Mission</div><div class="fv">ISR</div></div>
           <div><div class="fl">Sensor Suite</div><div class="fv">EO/IR · SAR</div></div>
           <div id="link-usa342-anomaly" style="display:none;grid-column:1/-1">
-            <div class="fl" style="color:#E04444">Threatening Vehicle</div>
+            <div class="fl" style="color:#E04444">Anomalous Vehicle</div>
             <div class="fv" style="color:#E04444;cursor:pointer;text-decoration:underline;text-underline-offset:2px" onclick="jumpToVehicle('vrow-48821-header','vbody-48821')">NORAD-48821 →</div>
           </div>
         </div>
@@ -1020,7 +1020,7 @@ canvas#globe { display:block; width:100%; height:100%; }
             <div style="font-size:12px;font-weight:700;color:#E04444">NORAD-48821</div>
             <div style="font-size:12px;color:#4A5A6A;letter-spacing:.4px">HOSTILE · PRC/CNSA · Inspector · LEO 520km</div>
           </div>
-          <span style="font-size:12px;font-weight:700;color:#E04444;letter-spacing:.5px;background:rgba(204,51,51,0.1);padding:2px 6px;border:1px solid rgba(204,51,51,0.25);border-radius:2px">THREAT · DEV 9</span>
+          <span style="font-size:12px;font-weight:700;color:#E04444;letter-spacing:.5px;background:rgba(204,51,51,0.1);padding:2px 6px;border:1px solid rgba(204,51,51,0.25);border-radius:2px">ANOMALY · DEV 9</span>
         </div>
       </div>
 
@@ -1125,7 +1125,7 @@ canvas#globe { display:block; width:100%; height:100%; }
     </div>
     <div class="filter-group">
       <div class="filter-group-lbl">Status</div>
-      <label class="filter-item"><input type="checkbox" class="f-cb" id="f-anomaly" checked onchange="updateGlobeLayers()"><div class="f-dot" style="background:#E04444"></div><span class="f-lbl">Threat</span></label>
+      <label class="filter-item"><input type="checkbox" class="f-cb" id="f-anomaly" checked onchange="updateGlobeLayers()"><div class="f-dot" style="background:#E04444"></div><span class="f-lbl">Anomaly</span></label>
       <label class="filter-item"><input type="checkbox" class="f-cb" id="f-monitor" checked onchange="updateGlobeLayers()"><div class="f-dot" style="background:#4A8FD4"></div><span class="f-lbl">Monitor</span></label>
       <label class="filter-item"><input type="checkbox" class="f-cb" id="f-nom" checked onchange="updateGlobeLayers()"><div class="f-dot" style="background:#3A4A5A"></div><span class="f-lbl">Nominal</span></label>
       <label class="filter-item"><input type="checkbox" class="f-cb" id="f-atrisk" checked onchange="updateGlobeLayers()"><div class="f-dot" style="background:#DDEEFF"></div><span class="f-lbl">Asset at Risk</span></label>
@@ -1221,7 +1221,7 @@ canvas#globe { display:block; width:100%; height:100%; }
     <!-- L0 empty state -->
     <div id="coa-empty" style="padding-top:10px">
       <div class="empty-state">
-        <div class="empty-title">No Active Threat</div>
+        <div class="empty-title">No Active Anomaly</div>
         <div class="empty-sub">COA options will appear when a anomaly is detected and escalated to L2</div>
       </div>
     </div>
@@ -1355,7 +1355,7 @@ canvas#globe { display:block; width:100%; height:100%; }
       <div class="dialog-card" id="dialog-card">
         <div class="dialog-card-title" id="dialog-coa-title">—</div>
         <div class="dialog-card-fields">
-          <div><div class="fl">Threat Object</div><div class="fv thr">NORAD-48821</div></div>
+          <div><div class="fl">Anomalous Object</div><div class="fv thr">NORAD-48821</div></div>
           <div><div class="fl">Asset at Risk</div><div class="fv hi">USA-342</div></div>
           <div><div class="fl">DEV Score</div><div class="fv thr">9 / 10</div></div>
         </div>
@@ -1432,7 +1432,7 @@ window.updateGlobeLayers = function() {
   const vehicles = Object.entries(VEH_DATA)
     .filter(([,v]) => {
       if((v.type==='ours'||v.type==='a') && f.showOurs===false) return false;
-      if(v.type==='t'                    && f.showThreat===false) return false;
+      if(v.type==='t'                    && f.showAnom===false) return false;
       if(v.type==='suspect'              && f.showMon===false) return false;
       return true;
     })
@@ -1458,7 +1458,7 @@ window.updateGlobeLayers = function() {
   } else {
     const basePaths = typeof buildPaths === 'function' ? buildPaths() : [];
     paths = l2Active && f.showTraj ? basePaths : [];
-    arcs  = l2Active && f.showTraj && f.showThreat && f.showRisk
+    arcs  = l2Active && f.showTraj && f.showAnom && f.showRisk
       ? (typeof CLOSING_ARCS !== 'undefined' ? CLOSING_ARCS : [])
       : [];
   }
