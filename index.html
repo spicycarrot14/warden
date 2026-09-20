@@ -474,7 +474,7 @@ canvas#globe { display:block; width:100%; height:100%; }
       <button class="tab" id="tab-soh" onclick="leftTab(this,'soh')">SOH</button>
       <button class="tab" id="tab-tl"  onclick="leftTab(this,'timeline')">Timeline</button>
       <button class="tab" id="tab-con" onclick="leftTab(this,'contacts')">Contacts</button>
-      <button class="tab disabled" id="tab-dev" onclick="leftTab(this,'threat-intel')">Threats</button>
+      <button class="tab disabled" id="tab-dev" onclick="leftTab(this,'anomaly-intel')">Threats</button>
     </div>
   </div>
 
@@ -509,7 +509,7 @@ canvas#globe { display:block; width:100%; height:100%; }
           <div><div class="fl">Inclination</div><div class="fv">97.4°</div></div>
           <div><div class="fl">Mission</div><div class="fv">ISR</div></div>
           <div><div class="fl">Sensor Suite</div><div class="fv">EO/IR · SAR</div></div>
-          <div id="link-usa342-threat" style="display:none;grid-column:1/-1">
+          <div id="link-usa342-anomaly" style="display:none;grid-column:1/-1">
             <div class="fl" style="color:#E04444">Threatening Vehicle</div>
             <div class="fv" style="color:#E04444;cursor:pointer;text-decoration:underline;text-underline-offset:2px" onclick="jumpToVehicle('vrow-48821-header','vbody-48821')">NORAD-48821 →</div>
           </div>
@@ -985,7 +985,7 @@ canvas#globe { display:block; width:100%; height:100%; }
   </div>
 
   <!-- DEVIATION -->
-  <div class="panel-scroll" id="lt-threat-intel" style="display:none">
+  <div class="panel-scroll" id="lt-anomaly-intel" style="display:none">
     <div id="dev-empty" class="empty-state">
       <div class="empty-title">No Vehicle Selected</div>
       <div class="empty-sub">Select a vehicle with an active deviation to view analysis</div>
@@ -1125,7 +1125,7 @@ canvas#globe { display:block; width:100%; height:100%; }
     </div>
     <div class="filter-group">
       <div class="filter-group-lbl">Status</div>
-      <label class="filter-item"><input type="checkbox" class="f-cb" id="f-threat" checked onchange="updateGlobeLayers()"><div class="f-dot" style="background:#E04444"></div><span class="f-lbl">Threat</span></label>
+      <label class="filter-item"><input type="checkbox" class="f-cb" id="f-anomaly" checked onchange="updateGlobeLayers()"><div class="f-dot" style="background:#E04444"></div><span class="f-lbl">Threat</span></label>
       <label class="filter-item"><input type="checkbox" class="f-cb" id="f-monitor" checked onchange="updateGlobeLayers()"><div class="f-dot" style="background:#4A8FD4"></div><span class="f-lbl">Monitor</span></label>
       <label class="filter-item"><input type="checkbox" class="f-cb" id="f-nom" checked onchange="updateGlobeLayers()"><div class="f-dot" style="background:#3A4A5A"></div><span class="f-lbl">Nominal</span></label>
       <label class="filter-item"><input type="checkbox" class="f-cb" id="f-atrisk" checked onchange="updateGlobeLayers()"><div class="f-dot" style="background:#DDEEFF"></div><span class="f-lbl">Asset at Risk</span></label>
@@ -1171,7 +1171,7 @@ canvas#globe { display:block; width:100%; height:100%; }
     <div class="panel-meta">
       <div>
         <div class="panel-title" id="right-title">COA SELECTION</div>
-        <div class="panel-sub" id="right-sub">No threat active — monitoring</div>
+        <div class="panel-sub" id="right-sub">No anomaly active — monitoring</div>
       </div>
       <div class="state-badge l0" id="right-badge">L0 — MONITORING</div>
     </div>
@@ -1222,7 +1222,7 @@ canvas#globe { display:block; width:100%; height:100%; }
     <div id="coa-empty" style="padding-top:10px">
       <div class="empty-state">
         <div class="empty-title">No Active Threat</div>
-        <div class="empty-sub">COA options will appear when a threat is detected and escalated to L2</div>
+        <div class="empty-sub">COA options will appear when a anomaly is detected and escalated to L2</div>
       </div>
     </div>
 
@@ -1450,7 +1450,7 @@ window.updateGlobeLayers = function() {
     color: '#00CCCC', clickable: false,
   })) : [];
 
-  // If a COA is selected, show COA paths; otherwise show threat trajectories
+  // If a COA is selected, show COA paths; otherwise show anomaly trajectories
   let paths, arcs;
   if(l2Active && coa) {
     paths = buildCOAPaths(coa);
