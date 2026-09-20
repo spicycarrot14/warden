@@ -611,7 +611,7 @@ canvas#globe { display:block; width:100%; height:100%; }
           <div><div class="fl">Prior Maneuvers</div><div class="fv">0</div></div>
           <div><div class="fl">DEV Score</div><div class="fv" id="n48821-dev">2 / 10</div></div>
           <div id="link-48821-vehicle" style="display:none;grid-column:1/-1">
-            <div class="fl" style="color:#DDEEFF">Asset at Risk</div>
+            <div class="fl" style="color:#DDEEFF">Vehicle at Risk</div>
             <div class="fv" style="color:#DDEEFF;cursor:pointer;text-decoration:underline;text-underline-offset:2px" onclick="jumpToVehicle('vrow-usa342-header','vbody-usa342')">VEHICLE-342 →</div>
           </div>
         </div>
@@ -994,7 +994,7 @@ canvas#globe { display:block; width:100%; height:100%; }
 
       <!-- Affiliation context + relationship header -->
       <div style="padding:10px 16px 0;border-bottom:1px solid #1A2230;margin-bottom:0">
-        <!-- Asset vehicle row (selected, on top) -->
+        <!-- vehicle vehicle row (selected, on top) -->
         <div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid #0D1520">
           <svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
             <circle cx="9" cy="9" r="7.5" stroke="#00CCCC" stroke-width="1.5" fill="rgba(0,204,204,0.08)"/>
@@ -1119,7 +1119,7 @@ canvas#globe { display:block; width:100%; height:100%; }
       <div id="sat-suggestions" style="display:none;position:absolute;top:100%;left:0;right:0;background:#080B0F;border:1px solid #1A2230;border-radius:0 0 2px 2px;z-index:20;max-height:140px;overflow-y:auto;"></div>
     </div>
     <div class="filter-group">
-      <div class="filter-group-lbl">Our Assets</div>
+      <div class="filter-group-lbl">Our vehicles</div>
       <label class="filter-item"><input type="checkbox" class="f-cb" id="f-ours" checked onchange="updateGlobeLayers()"><div class="f-dot" style="background:#4A8FD4"></div><span class="f-lbl">Operator Vehicles</span></label>
       <label class="filter-item"><input type="checkbox" class="f-cb" id="f-gs" checked onchange="updateGlobeLayers()"><div class="f-dot" style="background:#2A5A8A"></div><span class="f-lbl">Ground Stations</span></label>
     </div>
@@ -1128,7 +1128,7 @@ canvas#globe { display:block; width:100%; height:100%; }
       <label class="filter-item"><input type="checkbox" class="f-cb" id="f-anomaly" checked onchange="updateGlobeLayers()"><div class="f-dot" style="background:#E04444"></div><span class="f-lbl">Anomaly</span></label>
       <label class="filter-item"><input type="checkbox" class="f-cb" id="f-monitor" checked onchange="updateGlobeLayers()"><div class="f-dot" style="background:#4A8FD4"></div><span class="f-lbl">Monitor</span></label>
       <label class="filter-item"><input type="checkbox" class="f-cb" id="f-nom" checked onchange="updateGlobeLayers()"><div class="f-dot" style="background:#3A4A5A"></div><span class="f-lbl">Nominal</span></label>
-      <label class="filter-item"><input type="checkbox" class="f-cb" id="f-atrisk" checked onchange="updateGlobeLayers()"><div class="f-dot" style="background:#DDEEFF"></div><span class="f-lbl">Asset at Risk</span></label>
+      <label class="filter-item"><input type="checkbox" class="f-cb" id="f-atrisk" checked onchange="updateGlobeLayers()"><div class="f-dot" style="background:#DDEEFF"></div><span class="f-lbl">vehicle at Risk</span></label>
     </div>
     <div class="filter-group" style="margin-bottom:0">
       <div class="filter-group-lbl">Overlay</div>
@@ -1238,7 +1238,7 @@ canvas#globe { display:block; width:100%; height:100%; }
         <button class="eb-btn" onclick="escalateChain()">Escalate to Chain of Command →</button>
       </div>
 
-      <!-- Asset being protected -->
+      <!-- vehicle being protected -->
       <div style="margin:0 0 10px 0;padding:8px 10px;background:#040810;border:1px solid #1A2230;border-left:2px solid #00CCCC;display:flex;align-items:center;gap:8px;overflow:hidden">
         <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
           <circle cx="9" cy="9" r="7.5" stroke="#00CCCC" stroke-width="1.5" fill="rgba(0,204,204,0.08)"/>
@@ -1356,7 +1356,7 @@ canvas#globe { display:block; width:100%; height:100%; }
         <div class="dialog-card-title" id="dialog-coa-title">—</div>
         <div class="dialog-card-fields">
           <div><div class="fl">Anomalous Object</div><div class="fv thr">VEHICLE-48821</div></div>
-          <div><div class="fl">Asset at Risk</div><div class="fv hi">VEHICLE-342</div></div>
+          <div><div class="fl">vehicle at Risk</div><div class="fv hi">VEHICLE-342</div></div>
           <div><div class="fl">DEV Score</div><div class="fv thr">9 / 10</div></div>
         </div>
       </div>
